@@ -1,0 +1,91 @@
+.admin-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.admin-container h1 {
+  color: var(--darkRed);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.agregar-producto {
+  background-color: var(--lightGray);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.agregar-producto h2 {
+  color: var(--warmBrown);
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--warmBrown);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--beige);
+  border-radius: 4px;
+  color: var(--warmBrown);
+}
+
+.admin-button {
+  background-color: var(--coral);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.admin-button:hover {
+  background-color: var(--darkRed);
+}
+
+.productos-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.productos-table th,
+.productos-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--beige);
+  color: var(--warmBrown);
+}
+
+.productos-table th {
+  background-color: var(--lightGray);
+  color: var(--darkRed);
+}
+
+.delete-button {
+  background-color: var(--darkRed);
+  color: white;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+  background-color: var(--coral);
+}

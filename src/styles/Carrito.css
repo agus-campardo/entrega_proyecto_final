@@ -1,0 +1,130 @@
+.carrito-conteiner {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--lightGray);
+  border-radius: 12px;
+}
+
+.carrito-titulos {
+  display: grid;
+  grid-template-columns: 2fr 3fr 1fr 1fr 1fr 1fr;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 2px solid var(--beige);
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.carrito-titulos h2 {
+  color: var(--darkRed);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.carrito-card {
+  display: grid;
+  grid-template-columns: 2fr 3fr 1fr 1fr 1fr 1fr;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--beige);
+  gap: 1rem;
+}
+
+.carrito-producto {
+  font-weight: 600;
+  color: var(--darkRed);
+}
+
+.descripcion-carrito {
+  color: var(--warmBrown);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.carrito-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--beige);
+}
+
+.carrito-unitario, .carrito-sub {
+  color: var(--warmBrown);
+  font-weight: 600;
+}
+
+.boton-carrito {
+  background-color: var(--darkRed) !important;
+  color: white !important;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.boton-carrito:hover {
+  background-color: var(--coral) !important;
+  transform: scale(1.1);
+}
+
+.vaciar-carrito {
+  background: var(--darkRed);
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 2rem;
+  font-weight: 500;
+  transition: var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.vaciar-carrito:hover {
+  background: var(--coral);
+}
+
+.carrito-total {
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: right;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--beige);
+  color: var(--darkRed);
+}
+
+.carrito-vacio {
+  text-align: center;
+  color: var(--warmBrown);
+  font-style: italic;
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .carrito-titulos {
+    display: none;
+  }
+  
+  .carrito-card {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding: 1rem;
+    position: relative;
+  }
+  
+  .boton-carrito {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+}

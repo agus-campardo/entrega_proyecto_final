@@ -1,0 +1,110 @@
+:root {
+  --primary: var(--warmBrown);
+  --primary-dark: var(--darkRed);
+  --danger: var(--coral);
+  --danger-dark: var(--darkRed);
+  --light: var(--lightGray);
+  --dark: var(--darkRed);
+  --radius: 0.5rem;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.login-container {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: var(--lightGray);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: fit-content;
+  margin: 2rem auto;
+  border: 1px solid var(--beige);
+  position: relative;
+}
+
+.login-btn, .admin-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-btn {
+  background: var(--warmBrown);
+  color: var(--lightGray);
+}
+
+.login-btn:hover {
+  background: var(--darkRed);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(114, 76, 63, 0.3);
+}
+
+.admin-btn {
+  background: var(--coral);
+  color: var(--lightGray);
+}
+
+.admin-btn:hover {
+  background: var(--darkRed);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(140, 63, 63, 0.3);
+}
+
+/* Efectos manteniendo la funcionalidad original */
+.login-btn:active, .admin-btn:active {
+  transform: scale(0.98);
+}
+
+.login-btn::after, .admin-btn::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: radial-gradient(circle, rgba(216, 216, 214, 0.3) 1%, transparent 1%) center/15000%;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.login-btn:active::after, .admin-btn:active::after {
+  opacity: 1;
+  background-size: 100%;
+  transition: background-size 0s;
+}
+
+/* Estados logout */
+.login-btn.logout {
+  background: var(--darkRed);
+}
+
+.admin-btn.logout {
+  background: var(--warmBrown);
+}
+
+.notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--warmBrown);
+  color: var(--lightGray);
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,110 @@
+/* Paleta de colores */
+:root {
+  --lightGray: rgba(216, 216, 214, 1);   /* Fondos */
+  --beige: rgba(216, 193, 173, 1);       /* Fondos, detalles */
+  --warmBrown: rgba(114, 76, 63, 1);     /* Textos */
+  --darkRed: rgba(63, 24, 24, 1);        /* Títulos/botones */
+  --coral: rgba(140, 63, 63, 1);         /* Destacados */
+  --transition: all 0.3s ease;
+}
+
+/* Productos Container */
+.productos-conteiner {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  background-color: var(--lightGray);
+  min-height: calc(100vh - 120px);
+}
+
+/* Product Card */
+.producto-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid var(--beige);
+}
+
+.producto-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.producto-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--beige);
+}
+
+.producto-card h2 {
+  font-size: 1.3rem;
+  margin: 1rem 1rem 0.5rem;
+  color: var(--darkRed);
+  font-weight: 600;
+  padding: 0 0.5rem;
+}
+
+.producto-card p {
+  margin: 0 1rem 0.5rem;
+  color: var(--warmBrown);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  padding: 0 0.5rem;
+}
+
+.producto-card .price {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--coral);
+  margin: 0.5rem 1rem;
+  text-align: center;
+}
+
+/* Botones */
+.add-to-cart, .ver-detalle {
+  background: var(--darkRed);
+  color: white;
+  border: none;
+  padding: 0.7rem;
+  margin: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+}
+
+.ver-detalle {
+  background: var(--beige);
+  color: var(--darkRed);
+  margin-bottom: 1rem;
+}
+
+.add-to-cart:hover {
+  background: var(--coral);
+}
+
+.ver-detalle:hover {
+  background: var(--warmBrown);
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .productos-conteiner {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    padding: 1rem;
+  }
+}

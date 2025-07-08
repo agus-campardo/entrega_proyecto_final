@@ -1,0 +1,27 @@
+:root {
+  --lightGray: rgba(216, 216, 214, 1);
+  --beige: rgba(216, 193, 173, 1);
+  --warmBrown: rgba(114, 76, 63, 1);
+  --darkRed: rgba(63, 24, 24, 1);
+  --coral: rgba(140, 63, 63, 1);
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--lightGray);
+  color: var(--warmBrown);
+}
+
+:root {
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Lora', serif;
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, .header-title {
+  font-family: var(--font-heading);
+}
