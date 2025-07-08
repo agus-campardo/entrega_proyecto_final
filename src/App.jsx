@@ -30,11 +30,7 @@ function App() {
           <Route path="/nosotros" element={<About />} />
           <Route path="/contacto" element={<Contacto/>} />
           <Route path="/productos/:id" element={<ProductoDetalle/>} />
-          <Route path='/admin' element={<Admin/>} />
-          <Route 
-            path="/admin/agregarProductos" 
-            element={<FormularioProducto/>}
-          />
+          <Route path='/admin/agregarProductos' element={<FormularioProducto />} />
         </Routes>
       </div>
     </Router>

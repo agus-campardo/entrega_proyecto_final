@@ -53,12 +53,6 @@ function FormularioProducto({}) {
     }
   }
 
-  if(!admin){
-    return(
-      <Navigate to="/login" replace/>
-    )
-  }
-
   return ( 
     <form onSubmit={handleSubmit2}>
       <h2>Agregar Producto</h2>
@@ -92,3 +86,4 @@ function FormularioProducto({}) {
 }
 
 export default FormularioProducto;
+  
