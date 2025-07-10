@@ -1,13 +1,15 @@
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDYurvqxgCTQ92os8BvGnGAoE3g3YrTR0c",
-  authDomain: "prueba-auth-e64d8.firebaseapp.com",
-  projectId: "prueba-auth-e64d8",
-  storageBucket: "prueba-auth-e64d8.firebasestorage.app",
-  messagingSenderId: "1042020842950",
-  appId: "1:1042020842950:web:b2694d263646612bb606c7"
+  apiKey: "AIzaSyDacJjPlNEUF--GoNiS1lEbxxmVneEDJag",
+  authDomain: "entregaproyectofinal-86f5b.firebaseapp.com",
+  projectId: "entregaproyectofinal-86f5b",
+  storageBucket: "entregaproyectofinal-86f5b.firebasestorage.app",
+  messagingSenderId: "168168876788",
+  appId: "1:168168876788:web:561438287f13b45f0acca1",
+  measurementId: "G-6NXE74S5GE"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -91,18 +93,18 @@ export function loginEmailPass(email, password){
 ///////////////////// BASE DE DATOS FIRESTORE  //////// ////////
 ////////////////////////////////////////////////////////////////
 
-import { addDoc, collection, getDocs, getFirestore } from "firebase/firestore";
+import { addDoc, collection, doc, getDoc, getDocs, getFirestore } from "firebase/firestore";
 
 const db = getFirestore(app);
 
-export function crearProducto(name, imagen, price, description) {
+export function crearProducto(producto) {
     return new Promise(async (res, rej) => {
         try {
         const docRef = await addDoc(collection(db, "productos"), {
-            name: name,
-            imagen: imagen,
-            price: price,
-            description: description
+            name: producto.name,
+            imagen: producto.imagen,
+            price: producto.price,
+            description: producto.description
         });
 
         console.log("Document written with ID: ", docRef.id);
@@ -119,10 +121,13 @@ export function obtenerProductos() {
     return(
         new Promise(async (res, rej) => {
                 try {
-                    const querySnapshot = await getDocs(collection(db, "users"));
+                    const querySnapshot = await getDocs(collection(db, "productos"));
+                    console.log(querySnapshot, "respuesta al getDocs")
                     
                     const resultados = querySnapshot.docs.map(doc => {
+                        console.log(doc, "documento sin ejecutar metodo .data()")
                         const data = doc.data();
+                        console.log(data, "doc con data extraida")
                         return {
                             id: doc.id,
                             name: data.name,
@@ -133,6 +138,38 @@ export function obtenerProductos() {
                     });
 
                     res (resultados);
+                } catch (error) {
+                    console.error("Error al obtener los usuarios:", error);
+                    rej (error);
+                }
+        })
+    )
+}
+
+export function obtenerProductoEnFirebase(id) {
+    return(
+        new Promise(async (res, rej) => {
+                try {
+                    const docRef = doc(db, "productos", id);
+                    const docSnap = await getDoc(docRef);
+
+                    if (docSnap.exists()) {
+                        console.log("Document data:", docSnap.data());
+                        const data = docSnap.data();
+                        const producto = {
+                            id: docSnap.id,
+                            name: data.name,
+                            imagen: data.imagen,
+                            price: data.price,
+                            description: data.description
+                        }
+                        console.log(producto)
+                        res(producto)
+                    } else {
+                    // docSnap.data() will be undefined in this case
+                    console.log("No such document!");
+                        rej("No such document!")
+                    }
                 } catch (error) {
                     console.error("Error al obtener los usuarios:", error);
                     rej (error);
