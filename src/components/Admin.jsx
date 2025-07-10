@@ -2,9 +2,9 @@ import { Navigate } from "react-router-dom";
 import { useAuthContext } from "../contexts/AuthContext.jsx";
 
 export default function Admin() {
-    const {user} = useAuthContext();
+    const {admin} = useAuthContext();
 
-    if(!user){
+    if(!admin){
         return(
             <Navigate to="/login" replace/>
         )
@@ -15,3 +15,5 @@ export default function Admin() {
         </div>
     )
 }
+
+

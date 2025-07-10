@@ -2,7 +2,7 @@ export const agregarProducto = (producto) => {
     return(
         new Promise(async (res, rej) => {
             try {
-                const respuesta = await fetch('https://68100d8b27f2fdac24101ef5.mockapi.io/productos', {
+                const respuesta = await fetch('https://683267eec3f2222a8cb23943.mockapi.io/PRODUCTOS', {
                     method: 'POST',
                     headers: {
                     'Content-Type': 'application/json',
@@ -25,4 +25,26 @@ export const agregarProducto = (producto) => {
         })
     )
     
+};
+
+export const eliminarProducto = (id) => {
+ const confirmar = window.confirm('¿Estás seguro de eliminar?');
+ if (confirmar) {
+    return(
+        new Promise(async (res, rej) => {
+            try {
+                const respuesta = await fetch(`https://683267eec3f2222a8cb23943.mockapi.io/PRODUCTOS/${id}`, {
+                method: 'DELETE',
+                });
+                if (!respuesta.ok) throw new Error('Error al eliminar');
+                alert('Producto eliminado correctamente.');
+                res()
+            } catch (error) {
+                console.error(error.message);
+                alert('Hubo un problema al eliminar el producto.');
+                rej()
+            }
+        })
+    )
+ }
 };

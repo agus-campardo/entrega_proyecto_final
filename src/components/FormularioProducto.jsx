@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { dispararSweetBasico } from '../assets/SweetAlert';
-import { agregarProducto } from '../assets/requests';
 import { useAuthContext } from '../contexts/AuthContext';
 import { Navigate } from 'react-router-dom';
+import { useProductosContext } from '../contexts/ProductosContext';
 
 function FormularioProducto({}) {
-
+  const {agregarProducto} = useProductosContext();
   const {admin} = useAuthContext();
 
   const [producto, setProducto] = useState({
@@ -51,6 +51,12 @@ function FormularioProducto({}) {
     } else{
       dispararSweetBasico("Error en la carga de producto", validarForm, "error", "Cerrar")
     }
+  }
+
+  if(!admin){
+    return(
+      <Navigate to="/login" replace/>
+    )
   }
 
   return ( 

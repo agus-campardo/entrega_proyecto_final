@@ -1,42 +1,42 @@
-import { useEffect, useState, useContext } from "react";
-import "../styles/Productos.css";
-import Card from "./Card";
-import { CarritoContext } from "../contexts/CarritoContext";
+import { useEffect, useState } from "react"
+import "../styles/Productos.css"
+import Card from "./Card"
+import { useProductosContext } from "../contexts/ProductosContext"
+import { useAuthContext } from "../contexts/AuthContext"
 
-function ProductosContainer() {
-    const [productos, setProductos] = useState([]);
+function ProductosContainer({}){
+    const {productos, obtenerProductos} = useProductosContext();
+    //const [productosComponente, setProductosComponente] = useState([])
     const [cargando, setCargando] = useState(true);
     const [error, setError] = useState(null);
-    const { agregarAlCarrito } = useContext(CarritoContext);
 
-    useEffect(() => {
-        fetch('https://683267eec3f2222a8cb23943.mockapi.io/PRODUCTOS')
-            .then((respuesta) => respuesta.json())
-            .then((datos) => {
-                setProductos(datos);
-                setCargando(false);
-            })
-            .catch((error) => {
-                console.log("Error", error);
-                setError('Hubo un problema al cargar los productos.');
-                setCargando(false);
-            });
-    }, []);
+    {useEffect(() => {
+        obtenerProductos().then((productos) => {
+            setCargando(false);
+        }).catch((error) => {
+            setError('Hubo un problema al cargar los productos.');
+            setCargando(false);
+        })
+    }, []);}
 
-    if (cargando) return <p>Cargando productos...</p>;
-    if (error) return <p>{error}</p>;
 
-    return (
-        <div className="productos-conteiner">
-            {productos.map((producto) => (
-                <Card
-                    key={producto.id}
-                    producto={producto}
-                    agregarAlCarrito={agregarAlCarrito}
-                />
-            ))}
-        </div>
-    );
+    if (cargando) {
+        return <p>Cargando productos...</p>;
+    }else if (error){
+        return <p>{error}</p>;
+    }else{
+        return(
+            <div className="productos-conteiner">
+                {productos.map((producto) => (
+                    <Card
+                        producto={producto}
+                    />
+                ))}
+            </div>
+        )
+    }
+
+    
 }
 
-export default ProductosContainer;
+export default ProductosContainer

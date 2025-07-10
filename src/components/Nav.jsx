@@ -1,37 +1,30 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CarritoContext } from "../contexts/CarritoContext";
-import "../styles/Nav.css";
 import { useAuthContext } from "../contexts/AuthContext";
 
-function Nav() {
+function Nav({}) {
     const { productosCarrito } = useContext(CarritoContext);
-    const { user } = useAuthContext();
+    const { user, admin } = useAuthContext();
     
     return ( 
-        <nav className="main-nav">  
-            <ul className="nav-links">  
-                <li><Link to="/">Inicio</Link></li>  
-                <li><Link to="/productos">Productos</Link></li>   
-                <li><Link to="/nosotros">Nosotros</Link></li>  
-                <li><Link to="/contacto">Contacto</Link></li>  
+        <nav style={{ backgroundColor: "#333", color: "white", padding: "10px", width: "100%" }}>
+            <ul style={{ listStyle: "none", display: "flex", justifyContent: "space-around", margin: 0 }}>  
+                <li><Link to="/" style={{ color: "white", textDecoration: "none" }}>Inicio</Link></li>  
+                <li><Link to="/productos" style={{ color: "white", textDecoration: "none" }}>Productos</Link></li>   
+                <li><Link to="/nosotros" style={{ color: "white", textDecoration: "none" }}>Nosotros</Link></li>  
+                <li><Link to="/contacto" style={{ color: "white", textDecoration: "none" }}>Contacto</Link></li>  
                 <li>
-                    <Link to="/carrito">
-                        Carrito 
-                        {productosCarrito.length > 0 && (
-                            <span className="user-logged-in">
-                                {productosCarrito.length}
-                            </span>
+                    <Link to="/carrito" style={{ color: "white", textDecoration: "none" }}>
+                        Carrito
+                        {user && productosCarrito.length > 0 && (
+                            <span> {productosCarrito.length}</span>
                         )}
                     </Link>
                 </li> 
-                {user && <li><Link to="/admin">Admin</Link></li>}
-                <li>
-                    <Link to="/login" className="login-link">
-                        Login
-                    </Link>
-                </li>
-                {user && <li><Link to="/admin/agregarProductos">Agregar productos</Link></li>} 
+                {admin ? <li><Link to="/admin" style={{ color: "white", textDecoration: "none" }}>Admin</Link></li> : <></>}
+                <li><Link to="/login" style={{ color: "white", textDecoration: "none" }}>Login</Link></li>
+                {admin ? <li><Link to="/admin/agregarProductos" style={{ color: "white", textDecoration: "none" }}>Agregar productos</Link></li> : <></>}  
             </ul>
         </nav>
     );  
