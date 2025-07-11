@@ -11,7 +11,7 @@ function CarritoCard({producto, funcionDisparadora}){
         <div className="carrito-card" >
             <h3 className="carrito-producto" style={{color:"black"}}>{producto.name}</h3>
             {<p className="descripcion-carrito" style={{color:"black"}}>{producto.description}</p>}
-            <img className="carrito-image" src={producto.imagen}></img>
+            <img className="carrito-image" src={producto.image}></img>
             <span style={{color:"black"}}>{producto.cantidad}</span>
             <div className="carrito-unitario">
                 <span style={{color:"black"}}>{producto.price} $</span>

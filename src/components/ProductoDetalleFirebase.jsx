@@ -65,7 +65,7 @@ function ProductoDetalleFirebase({}) {
 
   return (
     <div className="detalle-container">
-      <img className="detalle-imagen" src={productoEncontrado.imagen} alt={productoEncontrado.name} />
+      <img className="detalle-image" src={productoEncontrado.image} alt={productoEncontrado.name} />
       <div className="detalle-info">
         <h2>{productoEncontrado.name}</h2>
         <p>{productoEncontrado.description}</p>

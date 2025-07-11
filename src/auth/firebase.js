@@ -54,27 +54,36 @@ export function crearUsuario(email, password){
 
 auth.useDeviceLanguage()
 export function logearG(){
-    signInWithPopup(auth, provider)
-    .then((result) => {
-        console.log("test", result)
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        // The signed-in user info.
-        const user = result.user;
-        // IdP data available using getAdditionalUserInfo(result)
-        // ...
-    }).catch((error) => {
-        console.log("test error", error )
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
-    });
+    return(
+        new Promise((res, rej) => {
+            signInWithPopup(auth, provider)
+            .then((result) => {
+                console.log("test", result)
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                console.log("credenciales G", credential)
+                const token = credential.accessToken;
+                // The signed-in user info.
+                const user = result.user;
+                console.log("User", user)
+                res(user)
+                // IdP data available using getAdditionalUserInfo(result)
+                // ...
+            }).catch((error) => {
+                console.log("test error", error )
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.customData.email;
+                // The AuthCredential type that was used.
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                rej()
+                // ...
+            });   
+        })
+    )
+
 }
 
 export function loginEmailPass(email, password){
@@ -101,7 +110,7 @@ export function loginEmailPass(email, password){
 ///////////////////// BASE DE DATOS FIRESTORE  //////// ////////
 ////////////////////////////////////////////////////////////////
 
-import { addDoc, collection, doc, getDoc, getDocs, getFirestore } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, getFirestore, setDoc } from "firebase/firestore";
 
 const db = getFirestore(app);
 
@@ -110,7 +119,7 @@ export function crearProducto(producto) {
         try {
         const docRef = await addDoc(collection(db, "productos"), {
             name: producto.name,
-            imagen: producto.imagen,
+            image: producto.image,
             price: producto.price,
             description: producto.description
         });
@@ -125,7 +134,42 @@ export function crearProducto(producto) {
     });
 }
 
-export function obtenerProductos() {
+export function editarProductoFirebase(producto){
+    return(
+        new Promise(async (res, rej) => {
+            try{
+                await setDoc(doc(db, "productos", producto.id), {
+                    name: producto.name,
+                    image: producto.image,
+                    price: producto.price,
+                    description: producto.description
+                })
+                console.log("Document written ");
+                res()
+            }catch (e){
+                console.error("Error adding document: ", e);
+                rej(e)
+            }
+        })
+    )
+}
+
+export function eliminarProductoF(id){
+    return(
+        new Promise(async(res, rej) => {
+            try{
+                await deleteDoc(doc(db, "productos", id))
+                res()
+            }catch (e){
+                console.error("Error adding document: ", e);
+                rej(e)
+            }
+
+        })
+    )
+}
+
+export function obtenerProductosF() {
     return(
         new Promise(async (res, rej) => {
                 try {
@@ -139,7 +183,7 @@ export function obtenerProductos() {
                         return {
                             id: doc.id,
                             name: data.name,
-                            imagen: data.imagen,
+                            image: data.image,
                             price: data.price,
                             description: data.description
                         };
@@ -167,7 +211,7 @@ export function obtenerProductoEnFirebase(id) {
                         const producto = {
                             id: docSnap.id,
                             name: data.name,
-                            imagen: data.imagen,
+                            image: data.image,
                             price: data.price,
                             description: data.description
                         }

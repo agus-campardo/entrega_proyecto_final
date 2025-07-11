@@ -8,7 +8,7 @@ function Login2() {
   const [usuario, setUsuario] = useState('');
   const [password, setPassword] = useState('');
   const [show, setShow] = useState(true)
-  const { login, user, logout, admin } = useAuthContext();
+  const { login, user, logout, admin, logearGmail } = useAuthContext();
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -28,18 +28,36 @@ function Login2() {
       login(usuario)
       dispararSweetBasico("Logeo exitoso", "", "success", "Confirmar")
     }).catch((error) => {
-      if(error.code == "auth/invalid-credential"){
-        dispararSweetBasico("Credenciales incorrectas", "", "error", "Cerrar")
-      }if(error.code == "auth/weak-password"){
-        dispararSweetBasico("Contraseña debil", "Password should be at least 6 characters", "error", "Cerrar")
-      }
-      //alert("Error")
-    })
+  if(error.code == "auth/invalid-credential"){
+    dispararSweetBasico("Credenciales incorrectas", "", "error", "Cerrar")
+  }
+  if(error.code == "auth/weak-password"){
+    dispararSweetBasico("Contraseña débil", "Debe tener al menos 6 caracteres", "error", "Cerrar")
+  }
+  if(error.code === "auth/email-already-in-use"){
+    dispararSweetBasico("Ese email ya está registrado", "", "error", "Cerrar")
+  }
+})
   }
 
   const handleSubmit2 = (e) => {
     logout()
   }
+
+  function logInGmail() {
+  logearGmail()
+    .then(() => {
+      dispararSweetBasico("Logeo exitoso con Google", "", "success", "Confirmar");
+    })
+    .catch((error) => {
+      if (error.code === "auth/popup-closed-by-user") {
+        dispararSweetBasico("Cancelaste el inicio de sesión con Google", "", "info", "Entendido");
+      } else {
+        dispararSweetBasico("Error inesperado", error.message, "error", "Cerrar");
+      }
+    });
+}
+
 
   function iniciarSesionEmailPass (e) {
     e.preventDefault();
@@ -67,28 +85,24 @@ function Login2() {
     )
   }if(!user && show){
     return(
-      <div>
-        <form onSubmit={iniciarSesionEmailPass}>
+       <div className='d-flex flex-column  justify-content-center  align-items-center '>
+        <form onSubmit={iniciarSesionEmailPass} className="p-4 border rounded shadow w-50">
           <h2>Iniciar sesión con Email y pass</h2>
-          <div>
-            <label>Email</label>
-            <input
-              type="text"
-              value={usuario}
-              onChange={(e) => setUsuario(e.target.value)}
-            />
+          <div className="mb-3">
+            <label className="form-label">Email</label>
+            <input value={usuario}
+              onChange={(e) => setUsuario(e.target.value)} type="email" className="form-control" required />
           </div>
-          <div>
-            <label>Contraseña:</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+          <div className="mb-3">
+            <label className="form-label">Contraseña</label>
+            <input value={password} onChange={(e) => setPassword(e.target.value)}  type="password" className="form-control" required />
           </div>
-          <button type="submit">Iniciar sesión</button>
+          <button type="submit" className="btn btn-primary w-50">Ingresar</button>
+          <button style={{marginTop:"2px"}} className="btn btn-secondary w-50"  onClick={handleShow}>Registrate</button>
+          <button style={{marginTop:"2px"}} className="btn btn-secondary w-50"  onClick={logInGmail}>Iniciar sesion con Gmail</button>
+        
+        
         </form>
-        <button style={{marginTop:"2px"}}  onClick={handleShow}>Registrate</button>
       </div>
     )
   }if(!user && !show){
