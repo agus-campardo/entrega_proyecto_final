@@ -2,29 +2,48 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CarritoContext } from "../contexts/CarritoContext";
 import { useAuthContext } from "../contexts/AuthContext";
+import "../styles/Nav.css";
 
-function Nav({}) {
+function Nav() {
     const { productosCarrito } = useContext(CarritoContext);
     const { user, admin } = useAuthContext();
     
     return ( 
-        <nav style={{ backgroundColor: "#333", color: "white", padding: "10px", width: "100%" }}>
-            <ul style={{ listStyle: "none", display: "flex", justifyContent: "space-around", margin: 0 }}>  
-                <li><Link to="/" style={{ color: "white", textDecoration: "none" }}>Inicio</Link></li>  
-                <li><Link to="/productos" style={{ color: "white", textDecoration: "none" }}>Productos</Link></li>   
-                <li><Link to="/nosotros" style={{ color: "white", textDecoration: "none" }}>Nosotros</Link></li>  
-                <li><Link to="/contacto" style={{ color: "white", textDecoration: "none" }}>Contacto</Link></li>  
+        <nav className="main-nav">
+            <div className="nav-logo-container">
+                <Link to="/">
+                    <img 
+                        src="https://github.com/agus-campardo/entrega_proyecto_final/blob/main/public/logo.jpg?raw=true" 
+                        alt="Logo" 
+                        className="nav-logo"
+                    />
+                </Link>
+            </div>
+            
+            <ul className="nav-links">  
+                <li><Link to="/" className="nav-link">Inicio</Link></li>  
+                <li><Link to="/productos" className="nav-link">Productos</Link></li>   
+                <li><Link to="/nosotros" className="nav-link">Nosotros</Link></li>  
+                <li><Link to="/contacto" className="nav-link">Contacto</Link></li>  
                 <li>
-                    <Link to="/carrito" style={{ color: "white", textDecoration: "none" }}>
+                    <Link to="/carrito" className="nav-link">
                         Carrito
                         {user && productosCarrito.length > 0 && (
-                            <span> {productosCarrito.length}</span>
+                            <span className="cart-counter">{productosCarrito.length}</span>
                         )}
                     </Link>
                 </li> 
-                {admin ? <li><Link to="/admin" style={{ color: "white", textDecoration: "none" }}>Admin</Link></li> : <></>}
-                <li><Link to="/login" style={{ color: "white", textDecoration: "none" }}>Login</Link></li>
-                {admin ? <li><Link to="/admin/agregarProductos" style={{ color: "white", textDecoration: "none" }}>Agregar productos</Link></li> : <></>}  
+                {admin && (
+                    <>
+                        <li><Link to="/admin" className="nav-link">Admin</Link></li>
+                        <li><Link to="/admin/agregarProductos" className="nav-link">Agregar productos</Link></li>
+                    </>
+                )}
+                <li>
+                    <Link to="/login" className="login-link">
+                        {user ? 'Mi Cuenta' : 'Login'}
+                    </Link>
+                </li>
             </ul>
         </nav>
     );  

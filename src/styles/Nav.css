@@ -1,34 +1,44 @@
-:root {
-  --nav-dark: #5a3e36; 
-  --warmBrown: #725c4f; 
-  --coral: #8c3f3f;
-  --lightGray: #f5f5f5;
-  --highlight: #d8c1ad; 
-
 /* Nav principal */
 .main-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: var(--nav-dark); 
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  position: relative;
-  z-index: 100;
+  padding: 1rem 3rem;
+  background-color: var(--nav-dark);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   width: 100%;
+}
+
+/* Contenedor del logo */
+.nav-logo-container {
+  height: 60px;
+}
+
+.nav-logo {
+  height: 100%;
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.nav-logo:hover {
+  transform: scale(1.05);
 }
 
 /* Lista de links */
 .nav-links {
   display: flex;
-  gap: 2rem; 
+  gap: 1.5rem;
   list-style: none;
   margin: 0;
   padding: 0;
+  align-items: center;
 }
 
 /* Items del nav */
-.nav-links a {
+.nav-link {
   color: var(--lightGray);
   text-decoration: none;
   font-weight: 500;
@@ -36,14 +46,15 @@
   padding: 0.5rem 0;
   position: relative;
   transition: all 0.3s ease;
+  font-size: 1.1rem;
 }
 
 /* Hover con subrayado */
-.nav-links a:hover {
+.nav-link:hover {
   color: var(--highlight);
 }
 
-.nav-links a::after {
+.nav-link::after {
   content: '';
   position: absolute;
   width: 0;
@@ -54,42 +65,69 @@
   transition: width 0.3s ease;
 }
 
-.nav-links a:hover::after {
+.nav-link:hover::after {
   width: 100%;
 }
 
 /* Contador del carrito */
-.user-logged-in {
+.cart-counter {
   background: var(--coral);
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  font-weight: bold;
-  margin-left: 5px;
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: 50%;
   font-size: 0.8rem;
+  margin-left: 0.3rem;
+  display: inline-block;
+  text-align: center;
+  min-width: 20px;
 }
 
 /* Botón de login */
 .login-link {
   color: var(--lightGray);
   text-decoration: none;
-  padding: 0.5rem 1.2rem;
-  border: 1px solid var(--lightGray);
-  border-radius: 20px;
+  padding: 0.6rem 1.5rem;
+  border: 2px solid var(--highlight);
+  border-radius: 30px;
   transition: all 0.3s ease;
   font-weight: 500;
+  margin-left: 1rem;
 }
 
 .login-link:hover {
-  background: var(--lightGray);
+  background: var(--highlight);
   color: var(--nav-dark);
-  border-color: transparent;
 }
 
-.nav-links a.active {
+/* Efecto para link activo */
+.nav-link.active {
   color: var(--highlight);
 }
 
-.nav-links a.active::after {
+.nav-link.active::after {
   width: 100%;
 }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .main-nav {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  
+  .nav-logo-container {
+    height: 50px;
+    margin-bottom: 1rem;
+  }
+  
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .login-link {
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
 }
