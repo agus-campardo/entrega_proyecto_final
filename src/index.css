@@ -1,5 +1,6 @@
+/*Paleta de colores!*/
 :root {
-  --lightGray: rgba(216, 216, 214, 1);
+  --lightGray: rgb(216, 216, 214);
   --beige: rgba(216, 193, 173, 1);
   --warmBrown: rgba(114, 76, 63, 1);
   --darkRed: rgba(63, 24, 24, 1);
