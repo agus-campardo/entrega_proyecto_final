@@ -15,7 +15,6 @@ function ProductoDetalle({}) {
   const {productoEncontrado, obtenerProducto, eliminarProducto} = useProductosContext();
 
   const { id } = useParams();
-  //const [producto, setProducto] = useState(null);
   const [cantidad, setCantidad] = useState(1);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
@@ -75,7 +74,7 @@ function ProductoDetalle({}) {
           <span>{cantidad}</span>
           <button onClick={sumarContador}>+</button>
         </div>
-        {admin ? <Link to={"/admin/editarProducto/" + id}> <button>Editar producto</button></Link> : <button onClick={funcionCarrito}>Agregar al carrito</button> }
+        {admin ? <Link to={"/admin/editarProducto/" + id}> <button>Editar producto</button></Link> : <button className="btn-agregar" onClick={funcionCarrito}>Agregar al carrito</button> }
         {admin ? <button onClick={dispararEliminar} >Eliminar Producto</button> : <></>}
       </div>
     </div>
