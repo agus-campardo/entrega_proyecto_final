@@ -1,14 +1,51 @@
-function Contacto () {
+import "../styles/Contacto.css";
 
-    return(
-        <div className="p-4 my-3 border rounded shadow">
-        <h3 className="mb-3">Formulario de Contacto</h3>
-        <input type="text" className="form-control mb-3" placeholder="Nombre" />
-        <input type="text" className="form-control mb-3" placeholder="Mensaje" />
-        <input type="email" className="form-control mb-3" placeholder="Correo Electrónico" />
-        <button className="btn btn-success w-100">Enviar</button>
+function Contacto() {
+    return (
+        <div className="contacto-container">
+            <div className="contacto-header">
+                <h3 className="contacto-title">Contáctanos</h3>
+                <p className="contacto-subtitle">¿Tienes alguna pregunta? Escribinos :D</p>
+            </div>
+            
+            <form className="contacto-form">
+                <div className="form-group">
+                    <label htmlFor="nombre">Nombre</label>
+                    <input 
+                        type="text" 
+                        id="nombre" 
+                        className="form-input"
+                        placeholder="Tu nombre completo"
+                    />
+                </div>
+                
+                <div className="form-group">
+                    <label htmlFor="email">Correo Electrónico</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        className="form-input"
+                        placeholder="tucorreo@ejemplo.com"
+                    />
+                </div>
+                
+                <div className="form-group">
+                    <label htmlFor="mensaje">Mensaje</label>
+                    <textarea 
+                        id="mensaje" 
+                        className="form-textarea"
+                        placeholder="Escribe tu mensaje aquí..."
+                        rows="5"
+                    ></textarea>
+                </div>
+                
+                <button type="submit" className="submit-button">
+                    Enviar Mensaje
+                    <span className="button-icon">→</span>
+                </button>
+            </form>
         </div>
-    )
+    );
 }
 
 export default Contacto;

@@ -1,55 +1,78 @@
-import "../styles/Carrito.css"
-import { useContext, useEffect, useState } from "react";
+import "../styles/Carrito.css";
+import { useContext } from "react";
 import CarritoCard from "./CarritoCard.jsx";
 import { Navigate } from "react-router-dom";
 import { CarritoContext } from "../contexts/CarritoContext.jsx";
 import { useAuthContext } from "../contexts/AuthContext.jsx";
 
 export default function Carrito() {
-    const {user} = useAuthContext();
-    const {productosCarrito, vaciarCarrito, borrarProductoCarrito} = useContext(CarritoContext);
-    console.log("Productos: " + productosCarrito)
+    const { user } = useAuthContext();
+    const { productosCarrito, vaciarCarrito } = useContext(CarritoContext);
 
     const total = productosCarrito.reduce(
-        (subTotal, producto) => subTotal + producto.price * producto.cantidad, 0
-    )
+        (subTotal, producto) => subTotal + (producto.price * producto.cantidad), 0
+    );
 
-    function funcionDisparadora(id){
-        borrarProductoCarrito(id)
-    }
-
-    function funcionDisparadora2(){
-        vaciarCarrito()
-    }
-
-    console.log("Total: " + total)
-
-    if(!user){
-        return(
-            <Navigate to="/login" replace/>
-        )
-    }
-
-    return(
-        <div className="carrito-conteiner">
-            <button onClick={funcionDisparadora2}>Vaciar carrito</button>
-            <div className="carrito-titulos" >
-                <h2 className="carrito-titulo-producto"> Producto </h2>
-                <h2 className="carrito-titulo-descripcion">Descripción</h2>
-                <h2>  </h2>
-                <h2> Cantidad </h2>
-                <h2> Precio unitario </h2>
-                <h2> Sub total </h2>
-                <h2>  </h2>
+    if (!user) {
+        return (
+            <div className="no-auth-message">
+                <div className="no-auth-icon">🛒</div>
+                <h3>¡Ups! Parece que no has iniciado sesión</h3>
+                <p>Para acceder al carrito y disfrutar de tus compras, primero inicia sesión en tu cuenta.</p>
+                <button 
+                    className="no-auth-button"
+                    onClick={() => window.location.href = '/login'}
+                >
+                    Iniciar sesión
+                </button>
             </div>
-            {productosCarrito.length > 0 ? productosCarrito.map((producto) => (
-                <CarritoCard 
-                    producto={producto}
-                    funcionDisparadora={funcionDisparadora}
-                />
-            ))
-            : <p>Carrito vacio</p>}
-            {total > 0 ? <span>Total a pagar: {total.toFixed(2)} $</span>: <></>}
+        );
+    }
+
+    return (
+        <div className="carrito-offcanvas">
+            <div className="carrito-header">
+                {productosCarrito.length > 0 && (
+                    <button 
+                        className="vaciar-carrito"
+                        onClick={vaciarCarrito}
+                        aria-label="Vaciar carrito"
+                    >
+                        Vaciar carrito
+                    </button>
+                )}
+            </div>
+
+            <div className="carrito-contenido">
+                {productosCarrito.length > 0 ? (
+                    <>
+                        <div className="carrito-lista">
+                            {productosCarrito.map((producto) => (
+                                <CarritoCard 
+                                    key={producto.id}
+                                    producto={producto}
+                                />
+                            ))}
+                        </div>
+                        
+                        <div className="carrito-resumen">
+                            <div className="carrito-total-final">
+                                <span>Total:</span>
+                                <span>${total.toFixed(2)}</span>
+                            </div>
+                            <button className="boton-finalizar-compra">
+                                Finalizar Compra
+                            </button>
+                        </div>
+                    </>
+                ) : (
+                    <div className="carrito-vacio-container">
+                        <div className="carrito-vacio-icon">🛒</div>
+                        <p className="carrito-vacio">Tu carrito está vacío</p>
+                        <p className="carrito-vacio-sub">Agrega productos para comenzar</p>
+                    </div>
+                )}
+            </div>
         </div>
-    )
+    );
 }

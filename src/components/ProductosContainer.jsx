@@ -61,7 +61,7 @@ function ProductosContainer({}){
                     />
                 </div>
 
-                {/* Grid de productos */}
+                {/* Lista de productos */}
                 <Row xs={1} md={2} lg={4} className="g-4">
                     {productosActuales.length > 0 ? 
                         productosActuales.map((producto) => (

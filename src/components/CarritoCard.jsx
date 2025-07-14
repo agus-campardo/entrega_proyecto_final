@@ -1,27 +1,46 @@
-import "../styles/Carrito.css"
+import "../styles/Carrito.css";
 
-function CarritoCard({producto, funcionDisparadora}){
-    
-    function borrarDelCarrito() {
-        console.log("Paso 1")
-        funcionDisparadora(producto.id)
-    }
+function CarritoCard({ producto, funcionDisparadora }) {
+    const precio = typeof producto.price === 'number' ? producto.price : parseFloat(producto.price);
+    const subtotal = precio * (producto.cantidad || 1);
 
-    return(
-        <div className="carrito-card" >
-            <h3 className="carrito-producto" style={{color:"black"}}>{producto.name}</h3>
-            {<p className="descripcion-carrito" style={{color:"black"}}>{producto.description}</p>}
-            <img className="carrito-image" src={producto.image}></img>
-            <span style={{color:"black"}}>{producto.cantidad}</span>
-            <div className="carrito-unitario">
-                <span style={{color:"black"}}>{producto.price} $</span>
+    return (
+        <div className="carrito-card">
+            <div className="carrito-image-container">
+                <img 
+                    className="carrito-image" 
+                    src={producto.image} 
+                    alt={producto.name}
+                    onError={(e) => e.target.src = 'https://via.placeholder.com/80'}
+                />
             </div>
-            <div className="carrito-sub">
-                <span style={{color:"black"}}>{producto.cantidad * producto.price} $</span>
+            
+            <div className="carrito-card-content">
+                <div className="carrito-card-header">
+                    <h3 className="carrito-producto">{producto.name}</h3>
+                    <button 
+                        className="carrito-remove-btn"
+                        onClick={() => funcionDisparadora(producto.id)}
+                        aria-label="Eliminar producto"
+                    >
+                        &times;
+                    </button>
+                </div>
+                
+                <div className="carrito-card-footer">
+                    <div className="cantidad-control">
+                        <span className="cantidad-label">Cantidad:</span>
+                        <span className="cantidad-value">{producto.cantidad || 1}</span>
+                    </div>
+                    
+                    <div className="precio-info">
+                        <span className="precio-unitario">{precio.toFixed(2)} $</span>
+                        <span className="precio-total">{subtotal.toFixed(2)} $</span>
+                    </div>
+                </div>
             </div>
-            <button className="boton-carrito" onClick={borrarDelCarrito} style={{backgroundColor: "red" ,color:"black"}}>X</button>
         </div>
-    )
+    );
 }
 
-export default CarritoCard
+export default CarritoCard;

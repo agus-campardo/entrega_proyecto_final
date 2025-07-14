@@ -32,7 +32,7 @@ function App() {
           {/*<Route path='/login' element={<Login user={usuarioLogeado} admin={adminLogeado} setLogeadoAdmin={manejarAdmin} setLogeadoUser={manejarUser}/>}/>*/}
           <Route path="/login" element={<Login2/>} />
           <Route path="/productos" element={<ProductosContainer/>}/>
-          <Route path="/carrito" element={<Carrito /> }/>      
+          <Route path="/carrito" element={<Carrito />} />
           <Route path="/nosotros" element={<About />} />
           <Route path="/contacto" element={<Contacto/>} />
           <Route path="/productos/:id" element={<ProductoDetalle/>}/>
