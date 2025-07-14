@@ -20,6 +20,62 @@
   min-height: calc(100vh - 120px);
 }
 
+/* Estilos personalizados para la paginación */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+  gap: 0.5rem;
+}
+
+.pagination-btn {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--warmBrown);
+  background: transparent;
+  color: var(--warmBrown);
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination-btn:hover {
+  background: var(--warmBrown);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.pagination-btn.active {
+  background: var(--darkRed);
+  color: white;
+  border-color: var(--darkRed);
+}
+
+.pagination-btn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Para pantallas pequeñas */
+@media (max-width: 768px) {
+  .pagination-container {
+    flex-wrap: wrap;
+  }
+  
+  .pagination-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+}
+
+
+
+
 /* Product Card */
 .producto-card {
   background: white;

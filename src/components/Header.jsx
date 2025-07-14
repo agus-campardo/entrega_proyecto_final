@@ -1,5 +1,5 @@
 import "../styles/Header.css"
-
+/*
 function Header() {
   return (
     <header className="app-header">
@@ -13,3 +13,4 @@ function Header() {
 }
 
 export default Header;
+*/
