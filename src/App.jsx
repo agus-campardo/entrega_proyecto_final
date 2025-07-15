@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-import Home from './layouts/Home'
+import { useEffect, useState } from 'react';
+import './App.css';
+import Home from './layouts/Home';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Nav from './components/Nav';
 import ProductosContainer from './components/ProductosContainer';
@@ -9,8 +9,7 @@ import About from './components/About';
 import Contacto from './components/Contacto';
 import ProductoDetalle from './components/ProductoDetalle';
 import Admin from './components/Admin';
-import Login from './components/Login';
-import Login2 from './components/Login2';
+import Login2 from './components/Login2';  // Esta importación es correcta con export default
 import ProductosContainer1 from './components/Ale';
 import FormularioProducto from './components/FormularioProducto';
 import FormularioEdicion from './components/FormularioEdicion';
@@ -20,8 +19,8 @@ function App() {
   const {verificacionLog} = useAuthContext();
 
   useEffect(() => {
-    verificacionLog()
-  }, [])
+    verificacionLog();
+  }, []);
   
   return (
     <Router>
@@ -29,7 +28,6 @@ function App() {
         <Nav/>
         <Routes>
           <Route path="/" element={<Home />}/>
-          {/*<Route path='/login' element={<Login user={usuarioLogeado} admin={adminLogeado} setLogeadoAdmin={manejarAdmin} setLogeadoUser={manejarUser}/>}/>*/}
           <Route path="/login" element={<Login2/>} />
           <Route path="/productos" element={<ProductosContainer/>}/>
           <Route path="/carrito" element={<Carrito />} />
@@ -42,7 +40,7 @@ function App() {
         </Routes>
       </div>
     </Router>
-  )
+  );
 }
 
 export default App;
