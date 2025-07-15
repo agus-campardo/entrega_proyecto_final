@@ -1,0 +1,113 @@
+/* FORMULARIO DE PRODUCTO - ESTILO COHERENTE CON LOGIN */
+.formulario-producto-container {
+  max-width: 500px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  animation: fadeIn 0.4s ease-in-out;
+  border: 1px solid rgba(216, 193, 173, 0.3);
+}
+
+.formulario-producto {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formulario-producto h2 {
+  text-align: center;
+  color: var(--darkRed);
+  font-size: 1.8rem;
+  font-weight: 650;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.5px;
+}
+
+.formulario-producto p.subtitle {
+  text-align: center;
+  color: var(--warmBrown);
+  font-size: 0.92rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.formulario-producto .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formulario-producto label {
+  color: var(--warmBrown);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.formulario-producto input,
+.formulario-producto textarea {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1.5px solid var(--beige);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.formulario-producto textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.formulario-producto input:focus,
+.formulario-producto textarea:focus {
+  outline: none;
+  border-color: var(--darkRed);
+  box-shadow: 0 0 0 3px rgba(63, 24, 24, 0.08);
+}
+
+.formulario-producto button {
+  background: var(--darkRed);
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.formulario-producto button:hover {
+  background: var(--coral);
+  transform: translateY(-1.5px);
+  box-shadow: 0 3px 10px rgba(140, 63, 63, 0.2);
+}
+
+/* ANIMACIONES */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* PEQUEÑOS AJUSTES RESPONSIVE */
+@media (max-width: 600px) {
+  .formulario-producto-container {
+    margin: 2rem 1rem;
+    padding: 1.5rem;
+  }
+}

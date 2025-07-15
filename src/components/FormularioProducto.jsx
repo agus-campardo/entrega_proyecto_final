@@ -3,6 +3,7 @@ import { dispararSweetBasico } from '../assets/SweetAlert';
 import { useAuthContext } from '../contexts/AuthContext';
 import { Navigate } from 'react-router-dom';
 import { useProductosContext } from '../contexts/ProductosContext';
+import '../styles/FormularioProducto.css';
 
 function FormularioProducto({}) {
   const {agregarProducto} = useProductosContext();
@@ -60,36 +61,63 @@ function FormularioProducto({}) {
   }
 
   return ( 
-    <form onSubmit={handleSubmit2}>
-      <h2>Agregar Producto</h2>
-      <div>
-        <label>Nombre:</label>
-        <input
-          type="text" name="name" value={producto.name} onChange={handleChange} required/>
-      </div>
-      <div>
-        <label>URL de la Imagen</label>
-        <input
-          type="text" name="image" value={producto.image} onChange={handleChange} required/>
-      </div>
-      <div>
-        <label>Precio:</label>
-        <input type="number" name="price" value={producto.price} onChange={handleChange} required
-          min="0"/>
-      </div>
-       <div>
-        <label>Descripción:</label>
-        <textarea
-          name="description"
-          value={producto.description}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <button type="submit">Agregar Producto</button>
-    </form>
+    <div className="formulario-producto-container">
+      <form onSubmit={handleSubmit2} className="formulario-producto">
+        <h2>Agregar Producto</h2>
+        <p className="subtitle">Completá todos los campos para añadir un nuevo producto</p>
+        
+        <div className="form-group">
+          <label>Nombre del Producto:</label>
+          <input
+            type="text" 
+            name="name" 
+            value={producto.name} 
+            onChange={handleChange} 
+            placeholder="Ej: Café"
+            required
+          />
+        </div>
+        
+        <div className="form-group">
+          <label>URL de la Imagen:</label>
+          <input
+            type="text" 
+            name="image" 
+            value={producto.image} 
+            onChange={handleChange} 
+            placeholder="https://ejemplo.com/imagen.jpg"
+            required
+          />
+        </div>
+        
+        <div className="form-group">
+          <label>Precio (ARS):</label>
+          <input 
+            type="number" 
+            name="price" 
+            value={producto.price} 
+            onChange={handleChange} 
+            placeholder="Ej: 1200"
+            min="0"
+            required
+          />
+        </div>
+        
+        <div className="form-group">
+          <label>Descripción:</label>
+          <textarea
+            name="description"
+            value={producto.description}
+            onChange={handleChange}
+            placeholder="Describe el producto con al menos 10 caracteres..."
+            required
+          />
+        </div>
+        
+        <button type="submit">Agregar Producto</button>
+      </form>
+    </div>
   );
 }
 
 export default FormularioProducto;
-  
