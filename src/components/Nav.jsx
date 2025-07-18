@@ -10,7 +10,6 @@ import {
   Nav,
   Container,
   Button,
-  NavDropdown,
   Badge,
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -94,14 +93,9 @@ function NavBar() {
               </Nav.Link>
 
               {admin && (
-                <NavDropdown title="Admin" id="admin-nav-dropdown" className="nav-link">
-                  <NavDropdown.Item as={Link} to="/admin" className="nav-link">
-                    Panel
-                  </NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="/admin/agregarProductos" className="nav-link">
-                    Agregar Productos
-                  </NavDropdown.Item>
-                </NavDropdown>
+                <Nav.Link as={Link} to="/admin" className="nav-link" active={location.pathname === "/admin"}>
+                  Panel Admin
+                </Nav.Link>
               )}
             </Nav>
 

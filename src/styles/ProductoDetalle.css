@@ -9,6 +9,7 @@
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
   background-color: var(--lightGray);
   transition: all 0.3s ease;
+  font-family: 'Rowdies', sans-serif;
 }
 
 .detalle-container:hover {
@@ -37,6 +38,7 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 1rem 0;
+  font-family: 'Rowdies', sans-serif;
 }
 
 .detalle-info h2 {
@@ -45,6 +47,7 @@
   font-size: 2.2rem;
   font-weight: 700;
   line-height: 1.2;
+  font-family: 'Rowdies', sans-serif;
 }
 
 .detalle-info p {
@@ -52,6 +55,7 @@
   line-height: 1.7;
   margin: 0 0 2rem 0;
   font-size: 1.1rem;
+  font-family: 'Rowdies', sans-serif;
 }
 
 .detalle-info .price {
@@ -60,6 +64,7 @@
   color: var(--darkRed);
   margin: 0 0 2rem 0;
   display: inline-block;
+  font-family: 'Rowdies', sans-serif;
 }
 
 /* Contador Compacto */
@@ -74,6 +79,7 @@
   width: fit-content;
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  font-family: 'Rowdies', sans-serif;
 }
 
 .detalle-contador button {
@@ -89,6 +95,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Rowdies', sans-serif;
 }
 
 .detalle-contador button:hover {
@@ -102,6 +109,7 @@
   font-weight: bold;
   color: var(--darkRed);
   font-size: 1.1rem;
+  font-family: 'Rowdies', sans-serif;
 }
 
 /* Grupo Contador + Botón (NUEVO) */
@@ -111,6 +119,7 @@
   gap: 0.5rem;
   margin-top: 1.5rem;
   align-items: flex-start;
+  font-family: 'Rowdies', sans-serif;
 }
 
 /* Botón Agregar al Carrito (Compacto) */
@@ -130,6 +139,7 @@
   gap: 0.5rem;
   width: auto;
   max-width: 100%;
+  font-family: 'Rowdies', sans-serif;
 }
 
 .btn-agregar:hover {
@@ -153,6 +163,7 @@
   flex-direction: column;
   gap: 1rem;
   margin-top: 2rem;
+  font-family: 'Rowdies', sans-serif;
 }
 
 .btn-action {
@@ -168,6 +179,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  font-family: 'Rowdies', sans-serif;
 }
 
 .btn-editar {
@@ -190,35 +202,4 @@
   background: #ff5252;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .detalle-container {
-    flex-direction: column;
-    padding: 1.5rem;
-    gap: 2rem;
-    margin: 1rem;
-  }
-  
-  .detalle-image,
-  .detalle-info {
-    width: 100%;
-  }
-  
-  .detalle-image {
-    padding: 1rem;
-    max-height: 400px;
-  }
-  
-  .detalle-info h2 {
-    font-size: 1.8rem;
-  }
-  
-  .btn-agregar,
-  .btn-action {
-    padding: 0.8rem 1.5rem;
-    width: 100%;
-    max-width: none;
-  }
 }

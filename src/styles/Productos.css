@@ -8,6 +8,19 @@
   --transition: all 0.3s ease;
 }
 
+/* Aplicar Rowdies a todos los elementos de texto */
+.productos-conteiner,
+.producto-card,
+.producto-card h2,
+.producto-card p,
+.producto-card .price,
+.add-to-cart, 
+.ver-detalle,
+.pagination-container,
+.pagination-btn {
+  font-family: 'Rowdies', sans-serif;
+}
+
 /* Productos Container */
 .productos-conteiner {
   display: grid;
@@ -59,22 +72,6 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
-
-/* Para pantallas pequeñas */
-@media (max-width: 768px) {
-  .pagination-container {
-    flex-wrap: wrap;
-  }
-  
-  .pagination-btn {
-    width: 35px;
-    height: 35px;
-    font-size: 0.9rem;
-  }
-}
-
-
-
 
 /* Product Card */
 .producto-card {
@@ -155,12 +152,4 @@
 .ver-detalle:hover {
   background: var(--warmBrown);
   color: white;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .productos-conteiner {
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    padding: 1rem;
-  }
 }

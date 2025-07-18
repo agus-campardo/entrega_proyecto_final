@@ -9,8 +9,7 @@ import About from './components/About';
 import Contacto from './components/Contacto';
 import ProductoDetalle from './components/ProductoDetalle';
 import Admin from './components/Admin';
-import Login2 from './components/Login2';  // Esta importación es correcta con export default
-import ProductosContainer1 from './components/Ale';
+import Login2 from './components/Login2';  
 import FormularioProducto from './components/FormularioProducto';
 import FormularioEdicion from './components/FormularioEdicion';
 import { useAuthContext } from './contexts/AuthContext';

@@ -1,91 +1,165 @@
+/* Admin.css - Versión unificada */
+:root {
+  --lightGray: rgba(216, 216, 214, 1);
+  --beige: rgba(216, 193, 173, 1);
+  --warmBrown: rgba(114, 76, 63, 1);
+  --darkRed: rgba(63, 24, 24, 1);
+  --coral: rgba(140, 63, 63, 1);
+  --transition: all 0.3s ease;
+}
+
 .admin-container {
-  max-width: 1200px;
-  margin: 2rem auto;
+  font-family: 'Rowdies', sans-serif;
+  min-height: calc(100vh - 120px);
+  background-color: var(--lightGray);
   padding: 2rem;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.admin-container h1 {
-  color: var(--darkRed);
+.admin-header {
   text-align: center;
-  margin-bottom: 2rem;
-}
-
-.agregar-producto {
-  background-color: var(--lightGray);
+  margin-bottom: 3rem;
   padding: 1.5rem;
-  border-radius: 8px;
-  margin-bottom: 2rem;
-}
-
-.agregar-producto h2 {
-  color: var(--warmBrown);
-  margin-bottom: 1rem;
-}
-
-.form-group {
-  margin-bottom: 1rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: var(--warmBrown);
-}
-
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 0.5rem;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border: 1px solid var(--beige);
-  border-radius: 4px;
-  color: var(--warmBrown);
 }
 
-.admin-button {
-  background-color: var(--coral);
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.admin-button:hover {
-  background-color: var(--darkRed);
-}
-
-.productos-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.productos-table th,
-.productos-table td {
-  padding: 0.75rem;
-  text-align: left;
-  border-bottom: 1px solid var(--beige);
-  color: var(--warmBrown);
-}
-
-.productos-table th {
-  background-color: var(--lightGray);
+.admin-header h1 {
   color: var(--darkRed);
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
 }
 
-.delete-button {
-  background-color: var(--darkRed);
+.admin-header p {
+  color: var(--warmBrown);
+  font-size: 1.1rem;
+}
+
+.admin-dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.admin-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+  border: 1px solid var(--beige);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.admin-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.admin-card h2 {
+  color: var(--darkRed);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.admin-card p {
+  color: var(--warmBrown);
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+  line-height: 1.5;
+}
+
+.admin-btn {
+  background: var(--darkRed);
   color: white;
   border: none;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
+  padding: 0.8rem;
+  border-radius: 6px;
+  font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: var(--transition);
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  font-family: 'Rowdies', sans-serif;
+  width: 100%;
 }
 
-.delete-button:hover {
+.admin-btn:hover {
+  background: var(--coral);
+  transform: translateY(-2px);
+}
+
+/* Estilos para las opciones de productos */
+.product-options {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.option-btn {
+  padding: 12px;
+  background-color: var(--darkRed);
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: var(--transition);
+  font-family: 'Rowdies', sans-serif;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.option-btn:hover {
   background-color: var(--coral);
+  transform: translateY(-2px);
+}
+
+.option-message {
+  padding: 15px;
+  background-color: rgba(216, 193, 173, 0.1);
+  border-radius: 8px;
+  border-left: 4px solid var(--coral);
+  color: var(--warmBrown);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.go-to-products {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: var(--darkRed);
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: var(--transition);
+  font-family: 'Rowdies', sans-serif;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+.go-to-products:hover {
+  background-color: var(--coral);
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .admin-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .admin-header p {
+    font-size: 1rem;
+  }
 }

@@ -1,4 +1,23 @@
-/* Estilos base */
+/* Aplicar Rowdies a todos los elementos de texto */
+.carrito-offcanvas,
+.carrito-header,
+.carrito-titulo,
+.vaciar-carrito,
+.carrito-producto,
+.cantidad-control,
+.precio-info,
+.carrito-resumen,
+.no-auth-message,
+.kiroo-footer,
+.footer-brand h3,
+.footer-brand p,
+.footer-social a,
+.footer-links a,
+.footer-copyright {
+  font-family: 'Rowdies', sans-serif;
+}
+
+/* Footer */
 .kiroo-footer {
     background-color: rgb(171, 144, 144);
     color: white;
@@ -28,6 +47,7 @@
 .footer-brand p {
     font-style: italic;
     opacity: 0.8;
+    font-weight: 300; /* Light para Rowdies */
 }
 
 /* Redes sociales */
@@ -42,6 +62,7 @@
     color: white;
     font-size: 1.5rem;
     transition: transform 0.3s ease, color 0.3s ease;
+    font-weight: 400; /* Regular para Rowdies */
 }
 
 .footer-social a:hover {
@@ -62,6 +83,7 @@
     transition: color 0.3s ease;
     padding: 0.3rem 0;
     position: relative;
+    font-weight: 400; /* Regular para Rowdies */
 }
 
 .footer-links a:hover {
@@ -90,6 +112,7 @@
     margin-top: 1rem;
     font-size: 0.9rem;
     opacity: 0.8;
+    font-weight: 300; /* Light para Rowdies */
 }
 
 /* Responsive */
@@ -108,5 +131,3 @@
         align-items: center;
     }
 }
-
-

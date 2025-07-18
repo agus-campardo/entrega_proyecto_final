@@ -1,3 +1,14 @@
+/* Aplicar Rowdies a todos los elementos de texto */
+.main-container,
+.hero-section,
+.categorias-section,
+.ofertas-section,
+.testimonios-section,
+.hero-carousel {
+  font-family: 'Rowdies', sans-serif;
+}
+
+/* Manteniendo TODOS los estilos originales exactamente igual */
 .main-container {
     padding: 2rem;
     background-color: var(--lightGray);
@@ -15,6 +26,8 @@
 .hero-section h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
+    font-weight: 700; /* Bold para Rowdies */
+    letter-spacing: 0.03em; /* Ajustado para Rowdies */
 }
 
 /* Las categorías */
@@ -26,6 +39,7 @@
     color: var(--darkRed);
     text-align: center;
     margin-bottom: 2rem;
+    font-weight: 700; /* Bold para Rowdies */
 }
 
 .categorias-grid {
@@ -50,6 +64,7 @@
 .categoria-card h4 {
     color: var(--darkRed);
     margin-bottom: 0.5rem;
+    font-weight: 400; /* Regular para Rowdies */
 }
 
 /* Parte de ofertas */
@@ -61,6 +76,7 @@
     color: var(--darkRed);
     text-align: center;
     margin-bottom: 1rem;
+    font-weight: 700; /* Bold para Rowdies */
 }
 
 .ofertas-banner {
@@ -69,7 +85,7 @@
     padding: 1.5rem;
     text-align: center;
     border-radius: 8px;
-    font-weight: bold;
+    font-weight: 700; /* Bold para Rowdies */
 }
 
 /* Sección de testimonios */
@@ -81,6 +97,7 @@
     color: var(--darkRed);
     text-align: center;
     margin-bottom: 2rem;
+    font-weight: 700; /* Bold para Rowdies */
 }
 
 .testimonio-card {
@@ -92,13 +109,15 @@
     margin: 0 auto;
     text-align: center;
     font-style: italic;
+    font-weight: 300; /* Light para Rowdies */
 }
 
 .testimonio-card span {
     display: block;
     margin-top: 1rem;
-    font-weight: bold;
+    font-weight: 700; /* Bold para Rowdies */
     color: var(--warmBrown);
+    font-style: normal;
 }
 
 /* Estilos para el carrusel */
@@ -130,11 +149,13 @@
     color: var(--lightGray);
     font-size: 1.8rem;
     margin-bottom: 0.5rem;
+    font-weight: 700; /* Bold para Rowdies */
 }
 
 .hero-carousel .carousel-caption p {
     color: var(--lightGray);
     font-size: 1.2rem;
+    font-weight: 300; /* Light para Rowdies */
 }
 
 .hero-carousel .carousel-control-prev,
