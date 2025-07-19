@@ -18,7 +18,7 @@ export default function Carrito() {
             <div className="no-auth-message">
                 <div className="no-auth-icon">🛒</div>
                 <h3>¡Ups! Parece que no has iniciado sesión</h3>
-                <p>Para acceder al carrito y disfrutar de tus compras, primero inicia sesión en tu cuenta.</p>
+                <p>Para acceder al carrito, primero inicia sesión en tu cuenta.</p>
                 <button 
                     className="no-auth-button"
                     onClick={() => window.location.href = '/login'}

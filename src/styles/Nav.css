@@ -1,5 +1,5 @@
 /* ==================== */
-/* ESTILOS BASE DEL NAVBAR */
+/* NAVBAR BASE */
 /* ==================== */
 .navbar.main-nav {
   padding: 1rem 1.5rem;
@@ -10,39 +10,25 @@
   text-transform: uppercase;
   font-family: 'Rowdies', sans-serif;
   font-weight: 300;
-  letter-spacing: 0.05em;
-  will-change: background-color, padding;
+  letter-spacing: 0.04em;
+  font-size: 0.95rem; 
 }
 
-/* ==================== */
-/* NAVBAR AL HACER SCROLL */
-/* ==================== */
+/* Scroll */
 .navbar.main-nav.scrolled {
   padding: 0.5rem 1.5rem;
   background-color: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(10px);
 }
 
-.navbar.main-nav.scrolled .nav-logo-container {
-  height: 38px;
-  transition: height 0.5s ease;
-}
-
-.navbar.main-nav.scrolled .nav-link {
-  font-size: 0.95rem;
-  color: var(--lightGray) !important;
-  font-weight: 400;
-  transition: color 0.5s ease;
-}
-
 /* ==================== */
-/* LOGO DEL NAVBAR */
+/* LOGO - ESTILOS MEJORADOS */
 /* ==================== */
 .nav-logo-container {
-  height: 45px;
+  height: 50px; /* Aumenté un poco la altura */
   width: auto;
-  max-width: 150px;
-  transition: all 0.5s ease;
+  max-width: 180px; /* Aumenté el ancho máximo */
+  transition: all 0.4s ease;
   display: flex;
   align-items: center;
 }
@@ -52,32 +38,41 @@
   width: 100%;
   object-fit: contain;
   transition: transform 0.3s ease;
+  max-height: 100%; /* Asegura que no se desborde */
 }
 
-.nav-logo:hover {
-  transform: scale(1.05);
+/* Ajustes para el estado scrolled */
+.navbar.main-nav.scrolled .nav-logo-container {
+  height: 40px;
+  max-width: 150px;
+}
+
+/* Ajustes para mobile */
+@media (max-width: 767.98px) {
+  .nav-logo-container {
+    height: 45px;
+    max-width: 160px;
+  }
+  
+  .navbar.main-nav.scrolled .nav-logo-container {
+    height: 38px;
+    max-width: 140px;
+  }
 }
 
 /* ==================== */
-/* ELEMENTOS DE NAVEGACIÓN */
+/* LINKS */
 /* ==================== */
-.navbar-nav.nav-links {
-  gap: 1.8rem;
-  align-items: center;
-}
-
 .nav-link {
-  color: white;
+  color: white !important;
   text-decoration: none;
   font-weight: 400;
-  letter-spacing: 0.08em;
-  padding: 0.5rem 0;
+  letter-spacing: 0.06em;
+  padding: 0.4rem 0;
   position: relative;
-  transition: all 0.5s ease;
-  font-size: 1.1rem;
-  border: none !important;
+  transition: all 0.3s ease;
+  font-size: 0.95rem; /* más chiquito */
   background: transparent !important;
-  font-family: 'Rowdies', sans-serif;
 }
 
 .nav-link.active {
@@ -107,56 +102,54 @@
 }
 
 /* ==================== */
-/* CARRITO DE COMPRAS - ACTUALIZADO */
+/* ACCIONES DERECHA (Carrito + Login) */
 /* ==================== */
-.cart-container {
+.nav-actions {
   display: flex;
   align-items: center;
-  justify-content: center;
-  position: relative;
-  background: transparent !important;
-  transition: transform 0.2s ease;
-  color: white !important;
+  gap: 0.8rem;
 }
 
-.cart-container:hover {
-  transform: translateY(-2px);
+/* Carrito */
+.nav-link.cart-nav {
+  display: flex !important;
+  align-items: center;
+  color: white !important;
+  padding: 0.4rem 0.8rem !important;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.nav-link.cart-nav:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
   color: var(--highlight) !important;
 }
 
 .cart-icon {
-  font-size: 1.5rem;
-  color: inherit;
-  transition: color 0.3s ease;
+  font-size: 1.2rem;
+  margin-right: 0.25rem;
+  vertical-align: middle;
 }
 
-.cart-counter {
-  background: var(--coral) !important;
-  color: white !important;
-  padding: 0.2rem 0.5rem !important;
-  border-radius: 50% !important;
-  font-size: 0.75rem !important;
-  font-family: 'Rowdies', sans-serif;
-  font-weight: 700;
+.nav-link.cart-nav .badge {
+  font-size: 0.7rem;
+  margin-left: 0.3rem;
 }
 
-/* ==================== */
-/* BOTÓN DE LOGIN */
-/* ==================== */
+/* Login */
 .login-link {
   color: var(--lightGray) !important;
   text-decoration: none !important;
-  padding: 0.5rem 1.5rem !important;
+  padding: 0.35rem 1.2rem !important;
   border: 2px solid var(--highlight) !important;
   border-radius: 30px !important;
   transition: all 0.3s ease !important;
   font-weight: 400 !important;
-  font-size: 1rem !important;
+  font-size: 0.9rem !important;
   background: transparent !important;
   font-family: 'Rowdies', sans-serif;
-  letter-spacing: 0.05em;
-  white-space: nowrap;
-  margin-left: 1rem;
+  letter-spacing: 0.04em;
 }
 
 .login-link:hover {
@@ -167,94 +160,105 @@
 }
 
 /* ==================== */
-/* ESTILOS RESPONSIVE - MOBILE */
+/* RESPONSIVE */
 /* ==================== */
 @media (max-width: 991.98px) {
   .navbar-collapse {
     padding: 1rem 0;
-    background-color: rgba(171, 144, 144, 0.98);
-    margin-top: 0.5rem;
+    background-color: rgba(171, 144, 144, 0.95);
     border-radius: 0.5rem;
   }
-  
-  .nav-links {
-    gap: 0.5rem !important;
-  }
-  
+
   .nav-link {
-    padding: 0.75rem 1rem !important;
-    border-radius: 0.25rem;
+    padding: 0.7rem 1rem !important;
+    font-size: 0.95rem;
   }
-  
-  .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.1) !important;
-  }
-  
-  .login-link {
-    margin-left: 0 !important;
+
+  .nav-actions {
+    flex-direction: column;
+    align-items: stretch;
     margin-top: 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .nav-link.cart-nav {
+    justify-content: center;
+    width: 100%;
+    margin: 0.2rem 0;
+  }
+
+  .login-link {
     width: 100%;
     text-align: center;
   }
-  
-  .cart-container {
-    margin-left: 1rem;
-    margin-bottom: 0.5rem;
-  }
 }
 
-@media (max-width: 767.98px) {
-  .login-link {
-    padding: 0.5rem !important;
-    font-size: 0.9rem !important;
-  }
-  
-  .nav-logo-container {
-    max-width: 120px;
-  }
-}
-
-/* ==================== */
-/* ESTILOS PARA DESKTOP */
-/* ==================== */
 @media (min-width: 992px) {
   .navbar.main-nav {
-    padding: 1.2rem 3rem;
+    padding: 1rem 2.5rem;
   }
-  
+
   .navbar.main-nav.scrolled {
-    padding: 0.8rem 2.5rem;
+    padding: 0.7rem 2rem;
+  }
+}
+
+/* ==================== */
+/* EFECTO HOVER PARA TODOS LOS ELEMENTOS DEL MENÚ */
+/* ==================== */
+.nav-link {
+  color: white !important;
+  text-decoration: none;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  padding: 0.7rem 1rem !important;
+  position: relative;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  background: transparent !important;
+  border-radius: 30px !important; /* Mismo radio que el carrito */
+  margin: 0.2rem 0 !important; /* Espaciado consistente */
+}
+
+/* Efecto hover - igual que el carrito */
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  color: var(--highlight) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estado activo */
+.nav-link.active {
+  font-weight: 700;
+  color: var(--highlight) !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Quitamos el subrayado para mantener consistencia con el carrito */
+.nav-link::after {
+  display: none;
+}
+
+/* ==================== */
+/* AJUSTES ESPECÍFICOS PARA EL MENÚ HAMBURGUESA */
+/* ==================== */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    padding: 0.5rem 0;
+    background-color: rgba(171, 144, 144, 0.95);
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .nav-link {
+    margin: 0.15rem 0.5rem !important;
+    text-align: center;
+    width: calc(100% - 1rem);
   }
   
-  .cart-container {
-    margin-right: 1rem;
+  /* Efecto hover más pronunciado en mobile */
+  .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2) !important;
   }
-}
-
-/* ==================== */
-/* OFFCANVAS DEL CARRITO */
-/* ==================== */
-.offcanvas.offcanvas-end {
-  width: 450px;
-  max-width: 90vw;
-}
-
-.offcanvas-header {
-  padding: 1.5rem;
-  border-bottom: 1px solid var(--beige);
-  background-color: rgba(171, 144, 144, 0.9);
-}
-
-.offcanvas-title {
-  font-size: 1.5rem;
-  color: white;
-  font-weight: 700;
-  font-family: 'Rowdies', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.offcanvas-body {
-  padding: 0;
-  background-color: rgba(255, 255, 255, 0.95);
 }

@@ -131,3 +131,48 @@
         align-items: center;
     }
 }
+/* SWEET ALERT PERSONALIZADO */
+.swal-title-custom {
+  font-family: 'Rowdies', sans-serif;
+  color: var(--darkRed);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.swal-text-custom {
+  font-family: system-ui, -apple-system, sans-serif;
+  color: var(--warmBrown);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.swal-button-custom {
+  font-family: 'Rowdies', sans-serif !important;
+  background-color: var(--darkRed) !important;
+  color: white !important;
+  border: none !important;
+  padding: 0.7rem 1.5rem !important;
+  border-radius: 8px !important;
+  font-size: 0.9rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.03em !important;
+  transition: all 0.3s ease !important;
+  text-transform: uppercase !important;
+}
+
+.swal-button-custom:hover {
+  background-color: var(--coral) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 3px 10px rgba(140, 63, 63, 0.2) !important;
+}
+
+.swal-container-custom {
+  font-family: 'Rowdies', sans-serif;
+}
+
+/* Fondo difuminado personalizado */
+.swal2-backdrop-show {
+  background: rgba(216, 193, 173, 0.6) !important;
+}

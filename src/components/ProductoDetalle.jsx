@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import "../styles/ProductoDetalle.css";
-import { dispararSweetBasico } from "../assets/SweetAlert";
+import Swal from 'sweetalert2';
 import { CarritoContext } from "../contexts/CarritoContext";
 import { useAuthContext } from "../contexts/AuthContext";
 import { useProductosContext } from "../contexts/ProductosContext";
@@ -17,6 +17,24 @@ function ProductoDetalle() {
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
 
+  // Para las alertas
+  const mostrarAlerta = (icono, titulo, texto) => {
+    Swal.fire({
+      icon: icono,
+      title: titulo,
+      text: texto,
+      background: 'white',
+      color: '#3a0c0c',
+      confirmButtonColor: '#3a0c0c',
+      confirmButtonText: 'Entendido',
+      customClass: {
+        title: 'swal-title-custom',
+        confirmButton: 'swal-button-custom',
+        container: 'swal-container-custom'
+      }
+    });
+  };
+
   useEffect(() => {
     obtenerProducto(id)
       .then(() => setCargando(false))
@@ -29,15 +47,61 @@ function ProductoDetalle() {
 
   function funcionCarrito() {
     if (cantidad < 1) return;
-    dispararSweetBasico("Producto Agregado", "El producto fue agregado al carrito con éxito", "success", "Cerrar");
+    mostrarAlerta("success", "Producto Agregado", "El producto fue agregado al carrito con éxito");
     agregarAlCarrito({ ...productoEncontrado, cantidad });
   }
 
-  function dispararEliminar() {
-    eliminarProducto(id)
-      .then(() => navegar("/productos"))
-      .catch((error) => dispararSweetBasico("Hubo un problema al agregar el producto", error, "error", "Cerrar"));
-  }
+function dispararEliminar() {
+  Swal.fire({
+    title: '¿Eliminar producto?',
+    text: "¡Esta acción no se puede deshacer!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3a0c0c',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Sí, eliminar',
+    cancelButtonText: 'Cancelar',
+    background: 'white',
+    customClass: {
+      title: 'swal-title-custom',
+      confirmButton: 'swal-button-custom',
+      cancelButton: 'swal-cancel-button-custom',
+      container: 'swal-container-custom'
+    }
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+      try {
+        await eliminarProducto(id);
+        Swal.fire({
+          title: '¡Eliminado!',
+          text: 'El producto ha sido eliminado correctamente.',
+          icon: 'success',
+          confirmButtonColor: '#3a0c0c',
+          background: 'white',
+          customClass: {
+            title: 'swal-title-custom',
+            confirmButton: 'swal-button-custom',
+            container: 'swal-container-custom'
+          }
+        });
+        navegar("/productos");
+      } catch (error) {
+        Swal.fire({
+          title: 'Error',
+          text: 'Hubo un problema al eliminar el producto: ' + error.message,
+          icon: 'error',
+          confirmButtonColor: '#3a0c0c',
+          background: 'white',
+          customClass: {
+            title: 'swal-title-custom',
+            confirmButton: 'swal-button-custom',
+            container: 'swal-container-custom'
+          }
+        });
+      }
+    }
+  });
+}
 
   function sumarContador() {
     setCantidad(cantidad + 1);
@@ -61,7 +125,6 @@ function ProductoDetalle() {
           <p className="price">{productoEncontrado.price} $</p>
           
           <div className="contador-carrito-group">
-            {/* SOLO aparece si NO es admin */}
             {!admin && (
               <div className="detalle-contador">
                 <button onClick={restarContador}>-</button>
@@ -69,7 +132,6 @@ function ProductoDetalle() {
                 <button onClick={sumarContador}>+</button>
               </div>
             )}
-            {/* El botón ya está condicionado por !admin, así que no tocar */}
             {!admin && (
               <button className="btn-agregar" onClick={funcionCarrito}>
                 Agregar al carrito

@@ -1,0 +1,146 @@
+/* FORMULARIO DE EDICIÓN DE PRODUCTO - ESTILO COHERENTE */
+.formulario-edicion-container {
+  max-width: 500px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+  font-family: 'Rowdies', sans-serif;
+  animation: fadeIn 0.4s ease-in-out;
+  border: 1px solid rgba(216, 193, 173, 0.3);
+}
+
+.formulario-edicion {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formulario-edicion h2 {
+  text-align: center;
+  color: var(--darkRed);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.formulario-edicion .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formulario-edicion label {
+  color: var(--warmBrown);
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+.formulario-edicion input,
+.formulario-edicion textarea {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1.5px solid var(--beige);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.formulario-edicion textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.formulario-edicion input:focus,
+.formulario-edicion textarea:focus {
+  outline: none;
+  border-color: var(--darkRed);
+  box-shadow: 0 0 0 3px rgba(63, 24, 24, 0.08);
+}
+
+.formulario-edicion button {
+  background: var(--darkRed);
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  width: 100%;
+  margin-top: 0.5rem;
+  font-family: 'Rowdies', sans-serif;
+}
+
+.formulario-edicion button:hover {
+  background: var(--coral);
+  transform: translateY(-1.5px);
+  box-shadow: 0 3px 10px rgba(140, 63, 63, 0.2);
+}
+
+/* Estilos para el estado de carga */
+.cargando {
+  text-align: center;
+  color: var(--warmBrown);
+  font-size: 1rem;
+  padding: 2rem;
+}
+
+/* Estilos para mensajes de error */
+.error-mensaje {
+  color: var(--darkRed);
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+/* ANIMACIONES (reutilizadas del ejemplo) */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* BOTÓN VOLVER AL PANEL */
+.boton-volver-panel {
+  display: block;
+  background: var(--warmBrown);
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  width: 100%;
+  margin-top: 1rem;
+  font-family: 'Rowdies', sans-serif;
+  text-align: center;
+  text-decoration: none;
+}
+
+.boton-volver-panel:hover {
+  background: var(--darkRed);
+  transform: translateY(-1.5px);
+  box-shadow: 0 3px 10px rgba(140, 63, 63, 0.2);
+}
+

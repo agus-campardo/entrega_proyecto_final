@@ -5,7 +5,7 @@ import { useAuthContext } from "../contexts/AuthContext";
 import { TfiShoppingCart } from "react-icons/tfi";
 import { Offcanvas } from "bootstrap";
 import Carrito from "./Carrito";
-import { Navbar, Nav, Container, Button, Badge } from "react-bootstrap";
+import { Navbar, Nav, Container, Badge } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/Nav.css";
 
@@ -66,8 +66,7 @@ function NavBar() {
   const navItems = [
     { path: "/", name: "Inicio" },
     { path: "/productos", name: "Productos" },
-    { path: "/nosotros", name: "Nosotros" },
-    { path: "/contacto", name: "Contacto" }
+    { path: "/nosotros", name: "Nosotros" }
   ];
 
   return (
@@ -97,59 +96,61 @@ function NavBar() {
             <span className="navbar-toggler-icon"></span>
           </Navbar.Toggle>
 
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto mb-2 mb-lg-0">
-              {navItems.map((item) => (
-                <Nav.Link 
-                  key={item.path}
-                  as={Link} 
-                  to={item.path} 
-                  className="nav-link px-lg-2"
-                  active={location.pathname === item.path}
-                  onClick={handleNavLinkClick}
-                >
-                  {item.name}
-                </Nav.Link>
-              ))}
+<Navbar.Collapse id="basic-navbar-nav">
+  <Nav className="me-auto mb-2 mb-lg-0">
+    {navItems.map((item) => (
+      <Nav.Link 
+        key={item.path}
+        as={Link} 
+        to={item.path} 
+        className="nav-link px-lg-2"
+        active={location.pathname === item.path}
+        onClick={handleNavLinkClick}
+      >
+        {item.name}
+      </Nav.Link>
+    ))}
 
-              {admin && (
-                <Nav.Link 
-                  as={Link} 
-                  to="/admin" 
-                  className="nav-link px-lg-2"
-                  active={location.pathname === "/admin"}
-                  onClick={handleNavLinkClick}
-                >
-                  Admin
-                </Nav.Link>
-              )}
-            </Nav>
+    {admin && (
+      <Nav.Link 
+        as={Link} 
+        to="/admin" 
+        className="nav-link px-lg-2"
+        active={location.pathname === "/admin"}
+        onClick={handleNavLinkClick}
+      >
+        Admin
+      </Nav.Link>
+    )}
+  </Nav>
 
-            <div className="d-flex align-items-center ms-auto">
-              <Button 
-                variant="link" 
-                onClick={handleCarritoClick} 
-                className="cart-container p-0 me-3 position-relative"
-                aria-label="Carrito de compras"
-              >
-                <TfiShoppingCart className="cart-icon" />
-                {user && productosCarrito.length > 0 && (
-                  <Badge pill bg="danger" className="cart-counter position-absolute top-0 start-100 translate-middle">
-                    {productosCarrito.length}
-                  </Badge>
-                )}
-              </Button>
+    {/* Acciones: Carrito + Login */}
+    <div className="nav-actions">
+        <Nav.Link 
+            onClick={handleCarritoClick}
+            className="nav-link cart-nav px-lg-2"
+            style={{ cursor: "pointer" }}
+        >
+            <TfiShoppingCart className="cart-icon" />
+            Carrito
+            {user && productosCarrito.length > 0 && (
+            <Badge pill bg="danger" className="ms-1">
+                {productosCarrito.length}
+            </Badge>
+            )}
+        </Nav.Link>
 
-              <Nav.Link 
-                as={Link} 
-                to="/login" 
-                className="login-link"
-                onClick={handleNavLinkClick}
-              >
-                {user ? "Mi Cuenta" : "Login"}
-              </Nav.Link>
-            </div>
-          </Navbar.Collapse>
+        <Nav.Link 
+            as={Link} 
+            to="/login" 
+            className="login-link ms-2"
+            onClick={handleNavLinkClick}
+            style={{ padding: '0.5rem 1.5rem !important' }}
+        >
+            {user ? "Mi Cuenta" : "Login"}
+        </Nav.Link>
+    </div>
+</Navbar.Collapse>
         </Container>
       </Navbar>
 

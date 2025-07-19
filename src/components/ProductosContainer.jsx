@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useLocation, useNavigate } from "react-router-dom"; // Importamos estos hooks
 import "../styles/Productos.css"
 import { useProductosContext } from "../contexts/ProductosContext"
 import { useAuthContext } from "../contexts/AuthContext"
@@ -7,6 +8,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import CardProducto from "./Card"
 import { FaSearch } from "react-icons/fa";
+import Swal from 'sweetalert2';
 
 function ProductosContainer({}){
     const {productos, obtenerProductos, filtrarProductos} = useProductosContext();
@@ -19,6 +21,28 @@ function ProductosContainer({}){
     const [error, setError] = useState(null);
     const [filtro, setFiltro] = useState("")
     const totalPaginas = Math.ceil(productos.length / productosPorPagina);
+    const location = useLocation(); // Para acceder al state
+    const navigate = useNavigate(); // Para limpiar el state
+
+    // Efecto para mostrar el mensaje de eliminación
+    useEffect(() => {
+        if (location.state?.mensaje === 'eliminado') {
+            Swal.fire({
+                title: '¡Eliminado!',
+                text: 'El producto ha sido eliminado correctamente.',
+                icon: 'success',
+                confirmButtonColor: '#3a0c0c',
+                background: 'white',
+                customClass: {
+                    title: 'swal-title-custom',
+                    confirmButton: 'swal-button-custom',
+                    container: 'swal-container-custom'
+                }
+            });
+            // Limpiamos el state para que no se muestre al recargar
+            navigate(location.pathname, { replace: true, state: {} });
+        }
+    }, [location.state]);
 
     useEffect(() => {
         obtenerProductos().then((productos) => {

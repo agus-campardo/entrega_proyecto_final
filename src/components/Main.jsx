@@ -140,7 +140,7 @@ function Main() {
                     <Col lg={4} md={6}>
                         <Card className="category-card text-white">
                             <Card.Img 
-                                src="https://images.unsplash.com/photo-1556909211-d64b6b0516d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+                                src="https://github.com/agus-campardo/entrega_proyecto_final/blob/main/public/rapado.jpg?raw=true" 
                                 alt="Hogar"
                             />
                             <Card.ImgOverlay className="d-flex flex-column justify-content-end">
