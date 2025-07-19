@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../contexts/AuthContext';
 import { crearUsuario, loginEmailPass } from '../auth/firebase';
-import { dispararSweetBasico } from '../assets/SweetAlert';
-import '../styles/Login.css'; 
+import Swal from 'sweetalert2';
+import '../styles/Login.css';
 
 function Login2() {
   const [usuario, setUsuario] = useState('');
@@ -17,22 +17,38 @@ function Login2() {
     logout();
   };
 
+  const dispararSweetEstilizado = (titulo, texto, icono, textoBoton) => {
+    Swal.fire({
+      title: titulo,
+      text: texto,
+      icon: icono,
+      confirmButtonText: textoBoton,
+      confirmButtonColor: '#AB9090', // Color rosa/marron de tu navbar
+      background: 'white',
+      customClass: {
+        title: 'swal-title-custom',
+        confirmButton: 'swal-button-custom',
+        popup: 'swal-popup-custom'
+      }
+    });
+  };
+
   function registrarUsuario(e) {
     e.preventDefault();
     crearUsuario(usuario, password)
       .then(() => {
         login(usuario);
-        dispararSweetBasico("Registro exitoso", "", "success", "Confirmar");
+        dispararSweetEstilizado("Registro exitoso", "", "success", "Confirmar");
       })
       .catch((error) => {
         if (error.code === "auth/invalid-credential") {
-          dispararSweetBasico("Credenciales incorrectas", "", "error", "Cerrar");
+          dispararSweetEstilizado("Credenciales incorrectas", "", "error", "Cerrar");
         }
         if (error.code === "auth/weak-password") {
-          dispararSweetBasico("Contraseña débil", "Debe tener al menos 6 caracteres", "error", "Cerrar");
+          dispararSweetEstilizado("Contraseña débil", "Debe tener al menos 6 caracteres", "error", "Cerrar");
         }
         if (error.code === "auth/email-already-in-use") {
-          dispararSweetBasico("Ese email ya está registrado", "", "error", "Cerrar");
+          dispararSweetEstilizado("Ese email ya está registrado", "", "error", "Cerrar");
         }
       });
   }
@@ -42,11 +58,11 @@ function Login2() {
     loginEmailPass(usuario, password)
       .then(() => {
         login(usuario);
-        dispararSweetBasico("Logeo exitoso", "", "success", "Confirmar");
+        dispararSweetEstilizado("Inicio de sesión exitoso", "", "success", "Continuar");
       })
       .catch((error) => {
         if (error.code === "auth/invalid-credential") {
-          dispararSweetBasico("Credenciales incorrectas", "", "error", "Cerrar");
+          dispararSweetEstilizado("Credenciales incorrectas", "", "error", "Cerrar");
         }
       });
   }
@@ -54,13 +70,13 @@ function Login2() {
   function logInGmail() {
     logearGmail()
       .then(() => {
-        dispararSweetBasico("Logeo exitoso con Google", "", "success", "Confirmar");
+        dispararSweetEstilizado("Inicio de sesión exitoso", "Has ingresado con Google", "success", "Continuar");
       })
       .catch((error) => {
         if (error.code === "auth/popup-closed-by-user") {
-          dispararSweetBasico("Cancelaste el inicio de sesión con Google", "", "info", "Entendido");
+          dispararSweetEstilizado("Inicio de sesión cancelado", "Cerraste la ventana de Google", "info", "Entendido");
         } else {
-          dispararSweetBasico("Error inesperado", error.message, "error", "Cerrar");
+          dispararSweetEstilizado("Error inesperado", error.message, "error", "Cerrar");
         }
       });
   }

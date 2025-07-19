@@ -3,6 +3,7 @@ import { dispararSweetBasico } from '../assets/SweetAlert';
 import { useAuthContext } from '../contexts/AuthContext';
 import { Navigate } from 'react-router-dom';
 import { useProductosContext } from '../contexts/ProductosContext';
+import Swal from 'sweetalert2';
 import '../styles/FormularioProducto.css';
 
 function FormularioProducto({}) {
@@ -23,12 +24,11 @@ function FormularioProducto({}) {
     if (!producto.price || producto.price <= 0) {
       return("El precio debe ser mayor a 0.")
     }
-    console.log(producto.description.trim())
     if (!producto.description.trim() || producto.description.length < 10) {
       return("La descripción debe tener al menos 10 caracteres.")
     }
     if(!producto.image.trim()){
-      return("La url de la imgaen no debe estar vacía")
+      return("La url de la imagen no debe estar vacía")
     }
     else{
       return true
@@ -43,9 +43,24 @@ function FormularioProducto({}) {
   const handleSubmit2 = (e) => {
     e.preventDefault();
     const validarForm = validarFormulario()
-    if (validarForm == true) {
+    if (validarForm === true) {
       agregarProducto(producto).then((data) => {
         setProducto({ name: '', price: '', description: '', image: ""});
+        
+        // Mostrar SweetAlert de éxito
+        Swal.fire({
+          title: '¡Producto agregado!',
+          text: 'El producto se ha añadido correctamente',
+          icon: 'success',
+          confirmButtonText: 'Aceptar',
+          confirmButtonColor: '#d8c1ad',
+          background: 'white',
+          customClass: {
+            title: 'swal-title-custom',
+            confirmButton: 'swal-button-custom'
+          }
+        });
+        
       }).catch((error) => {
         dispararSweetBasico("Hubo un problema al agregar el producto", error, "error", "Cerrar")
       })

@@ -1,0 +1,157 @@
+/* ==================== */
+/* ESTILOS BASE */
+/* ==================== */
+.about-section {
+  padding: 4rem 1.5rem;
+  background-color: #f9f5f2; /* Fondo claro similar a tu estilo */
+  font-family: 'Rowdies', sans-serif;
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+  padding: 3rem;
+  border: 1px solid rgba(216, 193, 173, 0.3);
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* ==================== */
+/* TÍTULO */
+/* ==================== */
+.about-title {
+  color: #5A3E3E; /* Color marrón oscuro */
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.about-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background-color: #AB9090; /* Color rosa/marrón de tu navbar */
+}
+
+/* ==================== */
+/* CONTENIDO */
+/* ==================== */
+.about-text {
+  color: #5A3E3E;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  text-align: center;
+  margin-bottom: 3rem;
+  font-weight: 300;
+}
+
+.highlight {
+  color: #AB9090;
+  font-weight: 400;
+}
+
+/* ==================== */
+/* TARJETAS DE CARACTERÍSTICAS */
+/* ==================== */
+.about-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.feature-card {
+  background: rgba(171, 144, 144, 0.05);
+  border-radius: 10px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(171, 144, 144, 0.1);
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(171, 144, 144, 0.1);
+  border-color: rgba(171, 144, 144, 0.3);
+}
+
+.feature-title {
+  color: #AB9090;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.feature-text {
+  color: #5A3E3E;
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* ==================== */
+/* TEXTO FINAL */
+/* ==================== */
+.about-closing {
+  color: #5A3E3E;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  text-align: center;
+  margin-top: 3rem;
+  font-weight: 300;
+}
+
+/* ==================== */
+/* ANIMACIONES */
+/* ==================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==================== */
+/* RESPONSIVE */
+/* ==================== */
+@media (max-width: 768px) {
+  .about-container {
+    padding: 2rem;
+  }
+  
+  .about-title {
+    font-size: 1.8rem;
+  }
+  
+  .about-features {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-section {
+    padding: 2rem 1rem;
+  }
+  
+  .about-container {
+    padding: 1.5rem;
+  }
+  
+  .about-title {
+    font-size: 1.5rem;
+  }
+}

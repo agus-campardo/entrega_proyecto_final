@@ -203,18 +203,36 @@
   }
 }
 
-@media (max-width: 480px) {
-  .login-container {
-    margin: 2rem auto;
-    padding: 1.5rem;
-  }
-  
-  .logout-card {
-    padding: 2rem 1.5rem;
-  }
-  
-  .login-form h2,
-  .logout-title {
-    font-size: 1.5rem; /* Ajuste responsive para Rowdies */
-  }
+/* Estilos personalizados para SweetAlert */
+.swal-title-custom {
+  font-family: 'Rowdies', sans-serif;
+  color: #5A3E3E; /* Color marrón oscuro similar a tu diseño */
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.swal-button-custom {
+  font-family: 'Rowdies', sans-serif;
+  background-color: #AB9090 !important; /* Color del navbar */
+  color: white !important;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.swal-button-custom:hover {
+  background-color: #C4A5A5 !important; /* Color más claro al hover */
+  transform: translateY(-1px);
+}
+
+.swal-popup-custom {
+  border-radius: 14px !important;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08) !important;
+  border: 1px solid rgba(216, 193, 173, 0.3) !important;
 }

@@ -110,14 +110,28 @@
   }
 }
 
-/* PEQUEÑOS AJUSTES RESPONSIVE */
-@media (max-width: 600px) {
-  .formulario-producto-container {
-    margin: 2rem 1rem;
-    padding: 1.5rem;
-  }
-  
-  .formulario-producto h2 {
-    font-size: 1.5rem;
-  }
+/* SWEET ALERT */
+.swal-title-custom {
+  font-family: 'Rowdies', sans-serif;
+  color: var(--darkRed);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.swal-button-custom {
+  font-family: 'Rowdies', sans-serif;
+  background-color: var(--darkRed) !important;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  transition: all 0.3s ease;
+}
+
+.swal-button-custom:hover {
+  background-color: var(--coral) !important;
+  transform: translateY(-1px);
 }
