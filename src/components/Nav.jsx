@@ -5,13 +5,7 @@ import { useAuthContext } from "../contexts/AuthContext";
 import { TfiShoppingCart } from "react-icons/tfi";
 import { Offcanvas } from "bootstrap";
 import Carrito from "./Carrito";
-import {
-  Navbar,
-  Nav,
-  Container,
-  Button,
-  Badge,
-} from "react-bootstrap";
+import { Navbar, Nav, Container, Button, Badge } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/Nav.css";
 
@@ -23,6 +17,7 @@ function NavBar() {
   const offcanvasRef = useRef(null);
   const [offcanvasInstance, setOffcanvasInstance] = useState(null);
   const [scrolled, setScrolled] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,14 +37,14 @@ function NavBar() {
     let instance = null;
 
     if (offcanvasRef.current) {
-        instance = new Offcanvas(offcanvasRef.current);
-        setOffcanvasInstance(instance);
+      instance = new Offcanvas(offcanvasRef.current);
+      setOffcanvasInstance(instance);
     }
 
     return () => {
-        if (instance) {
-            instance.dispose();
-        }
+      if (instance) {
+        instance.dispose();
+      }
     };
   }, []);
 
@@ -61,58 +56,99 @@ function NavBar() {
     } else {
       navigate("/");
     }
+    setExpanded(false);
   };
+
+  const handleNavLinkClick = () => {
+    setExpanded(false);
+  };
+
+  const navItems = [
+    { path: "/", name: "Inicio" },
+    { path: "/productos", name: "Productos" },
+    { path: "/nosotros", name: "Nosotros" },
+    { path: "/contacto", name: "Contacto" }
+  ];
 
   return (
     <>
-      <Navbar expand="lg" className={`main-nav ${scrolled ? 'scrolled' : ''}`} sticky="top">
-        <Container>
-          <Navbar.Brand as={Link} to="/" className="nav-logo-container">
+      <Navbar 
+        expand="lg" 
+        className={`main-nav ${scrolled ? 'scrolled' : ''}`} 
+        sticky="top"
+        expanded={expanded}
+        onToggle={(isExpanded) => setExpanded(isExpanded)}
+        collapseOnSelect
+      >
+        <Container fluid>
+          <Navbar.Brand as={Link} to="/" className="nav-logo-container me-lg-3">
             <img
               src="https://github.com/agus-campardo/entrega_proyecto_final/blob/main/public/logo.jpg?raw=true"
               alt="Logo"
               className="nav-logo"
+              style={{ objectFit: 'contain' }}
             />
           </Navbar.Brand>
 
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Toggle 
+            aria-controls="basic-navbar-nav" 
+            className="border-0"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </Navbar.Toggle>
 
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="nav-links me-auto">
-              <Nav.Link as={Link} to="/" className="nav-link" active={location.pathname === "/"}>
-                Inicio
-              </Nav.Link>
-              <Nav.Link as={Link} to="/productos" className="nav-link" active={location.pathname === "/productos"}>
-                Productos
-              </Nav.Link>
-              <Nav.Link as={Link} to="/nosotros" className="nav-link" active={location.pathname === "/nosotros"}>
-                Nosotros
-              </Nav.Link>
-              <Nav.Link as={Link} to="/contacto" className="nav-link" active={location.pathname === "/contacto"}>
-                Contacto
-              </Nav.Link>
+            <Nav className="me-auto mb-2 mb-lg-0">
+              {navItems.map((item) => (
+                <Nav.Link 
+                  key={item.path}
+                  as={Link} 
+                  to={item.path} 
+                  className="nav-link px-lg-2"
+                  active={location.pathname === item.path}
+                  onClick={handleNavLinkClick}
+                >
+                  {item.name}
+                </Nav.Link>
+              ))}
 
               {admin && (
-                <Nav.Link as={Link} to="/admin" className="nav-link" active={location.pathname === "/admin"}>
-                  Panel Admin
+                <Nav.Link 
+                  as={Link} 
+                  to="/admin" 
+                  className="nav-link px-lg-2"
+                  active={location.pathname === "/admin"}
+                  onClick={handleNavLinkClick}
+                >
+                  Admin
                 </Nav.Link>
               )}
             </Nav>
 
-            <Nav className="nav-links ms-auto align-items-center">
-              <Button variant="link" onClick={handleCarritoClick} className="cart-container p-0 me-2">
+            <div className="d-flex align-items-center ms-auto">
+              <Button 
+                variant="link" 
+                onClick={handleCarritoClick} 
+                className="cart-container p-0 me-3 position-relative"
+                aria-label="Carrito de compras"
+              >
                 <TfiShoppingCart className="cart-icon" />
                 {user && productosCarrito.length > 0 && (
-                  <Badge pill bg="danger" className="cart-counter">
+                  <Badge pill bg="danger" className="cart-counter position-absolute top-0 start-100 translate-middle">
                     {productosCarrito.length}
                   </Badge>
                 )}
               </Button>
 
-              <Nav.Link as={Link} to="/login" className="login-link">
+              <Nav.Link 
+                as={Link} 
+                to="/login" 
+                className="login-link"
+                onClick={handleNavLinkClick}
+              >
                 {user ? "Mi Cuenta" : "Login"}
               </Nav.Link>
-            </Nav>
+            </div>
           </Navbar.Collapse>
         </Container>
       </Navbar>

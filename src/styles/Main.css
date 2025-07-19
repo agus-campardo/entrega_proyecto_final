@@ -174,3 +174,118 @@
 .hero-carousel .carousel-indicators .active {
     background-color: var(--coral);
 }
+
+/* Beneficios */
+.benefits-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.benefit-card {
+    border: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    background-color: var(--lightGray);
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.benefit-icon {
+    font-size: 2.5rem;
+    color: var(--coral);
+    margin-bottom: 1rem;
+}
+
+/* Banner Promocional */
+.promo-banner {
+    background-color: var(--darkRed);
+    color: white;
+    margin: 3rem 0;
+}
+
+.promo-btn {
+    background-color: white;
+    color: var(--darkRed);
+    border-radius: 30px;
+    padding: 0.5rem 1.5rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.promo-btn:hover {
+    background-color: var(--coral);
+    color: white;
+}
+
+/* Categorías */
+.category-card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 250px;
+    transition: all 0.3s ease;
+}
+
+.category-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.category-card .card-img {
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+}
+
+.category-card .card-img-overlay {
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+}
+
+/* Newsletter */
+.newsletter-container {
+    background-color: var(--lightGray);
+}
+
+.newsletter-icon {
+    font-size: 3rem;
+    color: var(--coral);
+}
+
+.newsletter-input {
+    border-radius: 30px;
+    border: 2px solid var(--darkRed);
+    padding: 0.7rem 1.5rem;
+}
+
+.newsletter-btn {
+    border-radius: 30px;
+    padding: 0.7rem 2rem;
+    background-color: var(--darkRed);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.newsletter-btn:hover {
+    background-color: var(--coral);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .category-card {
+        height: 200px;
+    }
+    
+    .newsletter-container .d-flex {
+        flex-direction: column;
+    }
+    
+    .newsletter-btn {
+        margin-top: 1rem;
+        margin-left: 0 !important;
+        width: 100%;
+    }
+}
