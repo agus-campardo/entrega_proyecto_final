@@ -41,7 +41,7 @@ function Main() {
                     <Carousel.Item>
                         <img
                             className="d-block w-100"
-                            src="https://github.com/agus-campardo/entrega_proyecto_final/blob/main/public/z.jpg?raw=true"
+                            src="https://github.com/agus-campardo/entrega_proyecto_final/blob/main/public/j.jpg?raw=true"
                             alt="Tercer slide"
                         />
                         <Carousel.Caption>
