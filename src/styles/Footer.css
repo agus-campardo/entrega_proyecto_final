@@ -1,178 +1,89 @@
-/* Aplicar Rowdies a todos los elementos de texto */
-.carrito-offcanvas,
-.carrito-header,
-.carrito-titulo,
-.vaciar-carrito,
-.carrito-producto,
-.cantidad-control,
-.precio-info,
-.carrito-resumen,
-.no-auth-message,
-.kiroo-footer,
-.footer-brand h3,
-.footer-brand p,
-.footer-social a,
-.footer-links a,
-.footer-copyright {
-  font-family: 'Rowdies', sans-serif;
-}
-
-/* Footer */
+/* Footer - Versión con paleta KIROO */
 .kiroo-footer {
-    background-color: rgb(171, 144, 144);
-    color: white;
-    padding: 2rem 1rem;
-    margin-top: 3rem;
-    position: relative;
+    background-color: var(--beige);
+    color: var(--darkRed);
+    padding: 3rem 0 0;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.1);
 }
 
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Sección de marca */
-.footer-brand h3 {
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
+.kiroo-logo {
+    font-size: 2rem;
     font-weight: 700;
+    color: var(--darkRed);
     letter-spacing: 1px;
+    margin-bottom: 0.5rem;
 }
 
-.footer-brand p {
+.footer-tagline {
     font-style: italic;
-    opacity: 0.8;
-    font-weight: 300; /* Light para Rowdies */
+    color: var(--warmBrown);
+    font-weight: 300;
+    margin-bottom: 1.5rem;
 }
 
-/* Redes sociales */
-.footer-social {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    align-items: center;
+.footer-links-title,
+.footer-contact-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--darkRed);
+    margin-bottom: 1rem;
 }
 
-.footer-social a {
-    color: white;
-    font-size: 1.5rem;
-    transition: transform 0.3s ease, color 0.3s ease;
-    font-weight: 400; /* Regular para Rowdies */
-}
-
-.footer-social a:hover {
-    transform: translateY(-3px);
-    color: var(--coral);
-}
-
-/* Links rápidos */
-.footer-links {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-}
-
-.footer-links a {
-    color: white;
+.footer-link {
+    color: var(--warmBrown);
     text-decoration: none;
-    transition: color 0.3s ease;
-    padding: 0.3rem 0;
+    transition: all 0.3s ease;
+    font-weight: 400;
     position: relative;
-    font-weight: 400; /* Regular para Rowdies */
+    display: inline-block;
 }
 
-.footer-links a:hover {
+.footer-link:hover {
     color: var(--coral);
+    transform: translateX(5px);
 }
 
-.footer-links a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 1px;
-    bottom: 0;
-    left: 0;
+.social-icon {
+    color: var(--beige);
+    background-color: var(--darkRed);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.social-icon:hover {
     background-color: var(--coral);
-    transition: width 0.3s ease;
+    transform: translateY(-3px) scale(1.1);
 }
 
-.footer-links a:hover::after {
-    width: 100%;
+.footer-contact-info p {
+    margin-bottom: 0.8rem;
+    font-weight: 300;
+    color: var(--warmBrown);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Copyright */
+@media (min-width: 768px) {
+    .footer-contact-info p {
+        justify-content: flex-end;
+    }
+}
+
 .footer-copyright {
-    text-align: center;
-    padding-top: 1.5rem;
-    margin-top: 1rem;
-    font-size: 0.9rem;
-    opacity: 0.8;
-    font-weight: 300; /* Light para Rowdies */
+    font-size: 0.8rem;
+    color: var(--warmBrown);
+    font-weight: 300;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .footer-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-    
-    .footer-social {
-        justify-content: center;
-        margin: 1rem 0;
-    }
-    
-    .footer-links {
-        align-items: center;
-    }
-}
-/* SWEET ALERT PERSONALIZADO */
-.swal-title-custom {
-  font-family: 'Rowdies', sans-serif;
-  color: var(--darkRed);
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+.border-top {
+    border-color: rgba(114, 76, 63, 0.2) !important;
 }
 
-.swal-text-custom {
-  font-family: system-ui, -apple-system, sans-serif;
-  color: var(--warmBrown);
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-.swal-button-custom {
-  font-family: 'Rowdies', sans-serif !important;
-  background-color: var(--darkRed) !important;
-  color: white !important;
-  border: none !important;
-  padding: 0.7rem 1.5rem !important;
-  border-radius: 8px !important;
-  font-size: 0.9rem !important;
-  font-weight: 400 !important;
-  letter-spacing: 0.03em !important;
-  transition: all 0.3s ease !important;
-  text-transform: uppercase !important;
-}
-
-.swal-button-custom:hover {
-  background-color: var(--coral) !important;
-  transform: translateY(-1px) !important;
-  box-shadow: 0 3px 10px rgba(140, 63, 63, 0.2) !important;
-}
-
-.swal-container-custom {
-  font-family: 'Rowdies', sans-serif;
-}
-
-/* Fondo difuminado personalizado */
-.swal2-backdrop-show {
-  background: rgba(216, 193, 173, 0.6) !important;
-}

@@ -1,165 +1,178 @@
-/* Admin.css - Versión unificada */
-:root {
-  --lightGray: rgba(216, 216, 214, 1);
-  --beige: rgba(216, 193, 173, 1);
-  --warmBrown: rgba(114, 76, 63, 1);
-  --darkRed: rgba(63, 24, 24, 1);
-  --coral: rgba(140, 63, 63, 1);
-  --transition: all 0.3s ease;
-}
-
-.admin-container {
+/* Aplicar Rowdies a todos los elementos de texto */
+.carrito-offcanvas,
+.carrito-header,
+.carrito-titulo,
+.vaciar-carrito,
+.carrito-producto,
+.cantidad-control,
+.precio-info,
+.carrito-resumen,
+.no-auth-message,
+.kiroo-footer,
+.footer-brand h3,
+.footer-brand p,
+.footer-social a,
+.footer-links a,
+.footer-copyright {
   font-family: 'Rowdies', sans-serif;
-  min-height: calc(100vh - 120px);
-  background-color: var(--lightGray);
-  padding: 2rem;
 }
 
-.admin-header {
-  text-align: center;
-  margin-bottom: 3rem;
-  padding: 1.5rem;
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border: 1px solid var(--beige);
+/* Footer */
+.kiroo-footer {
+    background-color: rgb(171, 144, 144);
+    color: white;
+    padding: 2rem 1rem;
+    margin-top: 3rem;
+    position: relative;
 }
 
-.admin-header h1 {
-  color: var(--darkRed);
-  font-size: 2.2rem;
-  margin-bottom: 0.5rem;
-  font-weight: 700;
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.admin-header p {
-  color: var(--warmBrown);
-  font-size: 1.1rem;
+/* Sección de marca */
+.footer-brand h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
-.admin-dashboard {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  max-width: 1400px;
-  margin: 0 auto;
+.footer-brand p {
+    font-style: italic;
+    opacity: 0.8;
+    font-weight: 300; /* Light para Rowdies */
 }
 
-.admin-card {
-  background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: var(--transition);
-  border: 1px solid var(--beige);
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+/* Redes sociales */
+.footer-social {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
 }
 
-.admin-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+.footer-social a {
+    color: white;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+    font-weight: 400; /* Regular para Rowdies */
 }
 
-.admin-card h2 {
-  color: var(--darkRed);
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  font-weight: 600;
+.footer-social a:hover {
+    transform: translateY(-3px);
+    color: var(--coral);
 }
 
-.admin-card p {
-  color: var(--warmBrown);
-  margin-bottom: 1.5rem;
-  flex-grow: 1;
-  line-height: 1.5;
+/* Links rápidos */
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
 }
 
-.admin-btn {
-  background: var(--darkRed);
-  color: white;
-  border: none;
-  padding: 0.8rem;
-  border-radius: 6px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: var(--transition);
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 0.9rem;
-  letter-spacing: 0.5px;
-  font-family: 'Rowdies', sans-serif;
-  width: 100%;
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    padding: 0.3rem 0;
+    position: relative;
+    font-weight: 400; /* Regular para Rowdies */
 }
 
-.admin-btn:hover {
-  background: var(--coral);
-  transform: translateY(-2px);
+.footer-links a:hover {
+    color: var(--coral);
 }
 
-/* Estilos para las opciones de productos */
-.product-options {
-  margin-top: 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+.footer-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--coral);
+    transition: width 0.3s ease;
 }
 
-.option-btn {
-  padding: 12px;
-  background-color: var(--darkRed);
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 6px;
-  transition: var(--transition);
-  font-family: 'Rowdies', sans-serif;
-  text-transform: uppercase;
-  font-size: 0.85rem;
+.footer-links a:hover::after {
+    width: 100%;
 }
 
-.option-btn:hover {
-  background-color: var(--coral);
-  transform: translateY(-2px);
-}
-
-.option-message {
-  padding: 15px;
-  background-color: rgba(216, 193, 173, 0.1);
-  border-radius: 8px;
-  border-left: 4px solid var(--coral);
-  color: var(--warmBrown);
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-.go-to-products {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 8px 15px;
-  background-color: var(--darkRed);
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  transition: var(--transition);
-  font-family: 'Rowdies', sans-serif;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-}
-
-.go-to-products:hover {
-  background-color: var(--coral);
-  transform: translateY(-2px);
+/* Copyright */
+.footer-copyright {
+    text-align: center;
+    padding-top: 1.5rem;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    font-weight: 300; /* Light para Rowdies */
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .admin-header h1 {
-    font-size: 1.8rem;
-  }
-  
-  .admin-header p {
-    font-size: 1rem;
-  }
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .footer-social {
+        justify-content: center;
+        margin: 1rem 0;
+    }
+    
+    .footer-links {
+        align-items: center;
+    }
+}
+/* SWEET ALERT PERSONALIZADO */
+.swal-title-custom {
+  font-family: 'Rowdies', sans-serif;
+  color: var(--darkRed);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.swal-text-custom {
+  font-family: system-ui, -apple-system, sans-serif;
+  color: var(--warmBrown);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.swal-button-custom {
+  font-family: 'Rowdies', sans-serif !important;
+  background-color: var(--darkRed) !important;
+  color: white !important;
+  border: none !important;
+  padding: 0.7rem 1.5rem !important;
+  border-radius: 8px !important;
+  font-size: 0.9rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.03em !important;
+  transition: all 0.3s ease !important;
+  text-transform: uppercase !important;
+}
+
+.swal-button-custom:hover {
+  background-color: var(--coral) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 3px 10px rgba(140, 63, 63, 0.2) !important;
+}
+
+.swal-container-custom {
+  font-family: 'Rowdies', sans-serif;
+}
+
+/* Fondo difuminado personalizado */
+.swal2-backdrop-show {
+  background: rgba(216, 193, 173, 0.6) !important;
 }
