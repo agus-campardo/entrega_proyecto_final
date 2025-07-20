@@ -30,7 +30,7 @@ function Main() {
                     <Carousel.Item>
                         <img
                             className="d-block w-100"
-                            src="https://github.com/agus-campardo/entrega_proyecto_final/blob/main/public/carrusel4jpg.jpg?raw=true"
+                            src="https://github.com/agus-campardo/entrega_proyecto_final/blob/main/public/c-d-x-PDX_a_82obo-unsplash.jpg?raw=true"
                             alt="Segundo slide"
                         />
                         <Carousel.Caption>
