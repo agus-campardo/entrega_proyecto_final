@@ -151,20 +151,18 @@ function ProductoDetalle() {
             {/* Según tipo de usuario */}
             {!admin ? (
               /* Usuarios normales - Agregar al carrito */
-              <div className="bg-light p-4 rounded">
+              <div className="usuarios-normales">
                 {/* Selector de cantidad */}
-                <div className="d-flex align-items-center justify-content-between mb-3">
-                  <h5 className="mb-0">Cantidad:</h5>
-                  <div className="d-flex align-items-center">
-                    <Button variant="outline-dark" onClick={restarContador} className="px-3">
-                      -
-                    </Button>
-                    <span className="mx-3">{cantidad}</span>
-                    <Button variant="outline-dark" onClick={sumarContador} className="px-3">
-                      +
-                    </Button>
+              <div className="cantidad-selector">
+                <div className="cantidad-control">
+                  <h5 className="cantidad-titulo">Cantidad:</h5>
+                  <div className="cantidad-botones">
+                    <button className="boton-cantidad" onClick={restarContador}>-</button>
+                    <span className="cantidad-valor">{cantidad}</span>
+                    <button className="boton-cantidad" onClick={sumarContador}>+</button>
                   </div>
                 </div>
+              </div>
                 {/* Botón para agregar al carrito */}
                 <Button 
                   variant="dark" 

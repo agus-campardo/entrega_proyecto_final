@@ -23,7 +23,7 @@ function Login2() {
       text: texto,
       icon: icono,
       confirmButtonText: textoBoton,
-      confirmButtonColor: '#AB9090', // Color rosa/marron de tu navbar
+      confirmButtonColor: '#AB9090',
       background: 'white',
       customClass: {
         title: 'swal-title-custom',
@@ -90,7 +90,8 @@ function Login2() {
     return (
       <div className="logout-container">
         <div className="logout-card">
-          <h2 className="logout-title">¡Hola {user || admin}!</h2>
+          {/*Para que salude por el nombre */}
+          <h2 className="logout-title">¡Hola {user?.split('@')[0] || admin?.split('@')[0]}!</h2> 
           <p className="logout-text">Estás actualmente conectado. ¿Querés cerrar tu sesión?</p>
           <form onSubmit={handleSubmit2}>
             <button type="submit" className="btn logout-btn">Cerrar sesión</button>
@@ -132,7 +133,6 @@ function Login2() {
             <button type="button" className="secondary-btn" onClick={handleShow}>Crear una cuenta</button>
           </div>
         </form>
-
       ) : (
         <form onSubmit={registrarUsuario} className="login-form">
           <h2>Crear cuenta</h2>
