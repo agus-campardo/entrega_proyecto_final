@@ -1,4 +1,4 @@
-/* FORMULARIO DE EDICIÓN DE PRODUCTO - ESTILO COHERENTE */
+/* contenedor del formulario */
 .formulario-edicion-container {
   max-width: 500px;
   margin: 3rem auto;
@@ -11,12 +11,15 @@
   border: 1px solid rgba(216, 193, 173, 0.3);
 }
 
+/* FORM */
+/* estilos base del formulario */
 .formulario-edicion {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
+/* título del formulario */
 .formulario-edicion h2 {
   text-align: center;
   color: var(--darkRed);
@@ -27,12 +30,15 @@
   text-transform: uppercase;
 }
 
+/* GRUPOS */
+/* contenedor de cada campo */
 .formulario-edicion .form-group {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
+/* etiquetas de los campos */
 .formulario-edicion label {
   color: var(--warmBrown);
   font-size: 0.9rem;
@@ -40,6 +46,8 @@
   letter-spacing: 0.03em;
 }
 
+/* CAMPOS DE ENTRADA */
+/* estilos para inputs y textarea */
 .formulario-edicion input,
 .formulario-edicion textarea {
   width: 100%;
@@ -65,6 +73,8 @@
   box-shadow: 0 0 0 3px rgba(63, 24, 24, 0.08);
 }
 
+/* BOTONES */
+/* botón principal */
 .formulario-edicion button {
   background: var(--darkRed);
   color: white;
@@ -82,13 +92,15 @@
   font-family: 'Rowdies', sans-serif;
 }
 
+/* hover del botón */
 .formulario-edicion button:hover {
   background: var(--coral);
   transform: translateY(-1.5px);
   box-shadow: 0 3px 10px rgba(140, 63, 63, 0.2);
 }
 
-/* Estilos para el estado de carga */
+
+/* estado de carga */
 .cargando {
   text-align: center;
   color: var(--warmBrown);
@@ -96,7 +108,7 @@
   padding: 2rem;
 }
 
-/* Estilos para mensajes de error */
+/* mensajes de error */
 .error-mensaje {
   color: var(--darkRed);
   text-align: center;
@@ -105,19 +117,8 @@
   font-weight: 400;
 }
 
-/* ANIMACIONES (reutilizadas del ejemplo) */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* BOTÓN VOLVER AL PANEL */
+/* BOTON VOLVER */
+/* botón secundario */
 .boton-volver-panel {
   display: block;
   background: var(--warmBrown);
@@ -138,9 +139,21 @@
   text-decoration: none;
 }
 
+/* hover del botón volver */
 .boton-volver-panel:hover {
   background: var(--darkRed);
   transform: translateY(-1.5px);
   box-shadow: 0 3px 10px rgba(140, 63, 63, 0.2);
 }
 
+/* ANIMACION */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

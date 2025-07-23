@@ -1,10 +1,20 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react'; // Añade useEffect aquí
 import { logearG } from '../auth/firebase';
+
 // Crear el contexto de autenticación
 const AuthContext = createContext();
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [admin, setAdmin] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      const username = token.replace('fake-token-', '');
+      setUser(username);
+      if (username === "admin@gmail.com") setAdmin(true);
+    }
+  }, []);
 
   const login = (username) => {
     // Simulando la creación de un token (en una app real, esto sería generado por un servidor)
@@ -41,10 +51,11 @@ export function AuthProvider({ children }) {
     }
   }
 
-
   return (
     <AuthContext.Provider value={{ logearGmail, user, login, logout, admin, verificacionLog }}>
       {children}
-    </AuthContext.Provider> );
+    </AuthContext.Provider> 
+  );
 }
+
 export const useAuthContext = () => useContext(AuthContext);

@@ -1,13 +1,14 @@
 /* Paleta de colores */
 :root {
-  --darkRed: #d82c2c; /* Rojo principal */
-  --coral: #ff6b6b;   /* Rojo claro */
-  --beige: #f5f5dc;   /* Beige claro */
-  --warmBrown: #8b4513; /* Marrón */
-  --lightGray: #f8f9fa; /* Gris claro */
+  --darkRed: #d82c2c;     
+  --coral: #ff6b6b;       
+  --beige: #f5f5dc;       
+  --warmBrown: #8b4513;  
+  --lightGray: #f8f9fa;  
+  --transition: all 0.3s ease;
 }
 
-/* Tipo de letra a todos los elementos de textro */
+/* Mismo tipo de letra a todo */
 .carrito-offcanvas,
 .carrito-header,
 .carrito-titulo,
@@ -20,7 +21,19 @@
   font-family: 'Rowdies', sans-serif;
 }
 
-/* Mensaje cuando no hay sesión */
+/* =ESTILO BASE */
+.carrito-offcanvas {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0;
+  background: var(--lightGray);
+  position: relative;
+  overflow: hidden;
+}
+
+/* AUTENTIFICACION */
+/* mensaje cuando no hay sesión */
 .no-auth-message {
   text-align: center;
   padding: 2rem;
@@ -56,7 +69,7 @@
   border-radius: 25px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--transition);
   box-shadow: 0 2px 8px rgba(216, 44, 44, 0.2);
 }
 
@@ -66,18 +79,7 @@
   box-shadow: 0 4px 12px rgba(216, 44, 44, 0.3);
 }
 
-/* Estructura principal */
-.carrito-offcanvas {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 0;
-  background: var(--lightGray);
-  position: relative;
-  overflow: hidden;
-}
-
-/* Encabezado */
+/* ARRIBA DEL CARRITO */
 .carrito-header {
   display: flex;
   justify-content: space-between;
@@ -108,7 +110,7 @@
   border-radius: 20px;
   cursor: pointer;
   font-size: 0.85rem;
-  transition: all 0.3s ease;
+  transition: var(--transition);
 }
 
 .vaciar-carrito:hover {
@@ -117,18 +119,14 @@
   color: var(--darkRed);
 }
 
-.trash-icon {
-  font-size: 1rem;
-}
-
-/* Contenido */
+/* INFO DEL CARRITO */
 .carrito-contenido {
   flex: 1;
   overflow-y: auto;
   padding: 0 1.5rem;
 }
 
-/* Tarjeta de producto */
+/* PRODUCTOS */
 .carrito-card {
   display: flex;
   gap: 1rem;
@@ -231,6 +229,7 @@
   font-weight: 600;
 }
 
+/* RESUMNE */
 .carrito-resumen {
   position: sticky;
   bottom: 0;
@@ -265,6 +264,7 @@
   font-size: 1.3rem;
 }
 
+/* BOTON FINAL COMPRA */
 .boton-finalizar-compra {
   width: 100%;
   background: var(--darkRed);
@@ -274,7 +274,7 @@
   border-radius: 8px;
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--transition);
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.8px;

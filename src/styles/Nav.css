@@ -1,6 +1,4 @@
-/* ==================== */
-/* NAVBAR BASE */
-/* ==================== */
+/* Estilos base */
 .navbar.main-nav {
   padding: 1rem 1.5rem;
   background-color: rgb(171, 144, 144);
@@ -21,13 +19,11 @@
   backdrop-filter: blur(10px);
 }
 
-/* ==================== */
-/* LOGO - ESTILOS MEJORADOS */
-/* ==================== */
+/* LOGO */
 .nav-logo-container {
-  height: 50px; /* Aumenté un poco la altura */
+  height: 50px; 
   width: auto;
-  max-width: 180px; /* Aumenté el ancho máximo */
+  max-width: 180px; 
   transition: all 0.4s ease;
   display: flex;
   align-items: center;
@@ -38,31 +34,17 @@
   width: 100%;
   object-fit: contain;
   transition: transform 0.3s ease;
-  max-height: 100%; /* Asegura que no se desborde */
+  max-height: 100%; 
 }
 
-/* Ajustes para el estado scrolled */
 .navbar.main-nav.scrolled .nav-logo-container {
   height: 40px;
   max-width: 150px;
 }
 
-/* Ajustes para mobile */
-@media (max-width: 767.98px) {
-  .nav-logo-container {
-    height: 45px;
-    max-width: 160px;
-  }
-  
-  .navbar.main-nav.scrolled .nav-logo-container {
-    height: 38px;
-    max-width: 140px;
-  }
-}
 
-/* ==================== */
+
 /* LINKS */
-/* ==================== */
 .nav-link {
   color: white !important;
   text-decoration: none;
@@ -101,9 +83,7 @@
   width: 100%;
 }
 
-/* ==================== */
-/* ACCIONES DERECHA (Carrito + Login) */
-/* ==================== */
+/* CARRITO + LOGIN */
 .nav-actions {
   display: flex;
   align-items: center;
@@ -122,7 +102,7 @@
 }
 
 .nav-link.cart-nav:hover {
-  background-color: rgba(255, 255, 255, 0.1) !important;
+  background-color: rgba(162, 160, 160, 0.1) !important;
   color: var(--highlight) !important;
 }
 
@@ -203,11 +183,9 @@
   }
 }
 
-/* ==================== */
-/* EFECTO HOVER PARA TODOS LOS ELEMENTOS DEL MENÚ */
-/* ==================== */
+/* EFECTO */
 .nav-link {
-  color: white !important;
+  color: rgb(255, 255, 255) !important;
   text-decoration: none;
   font-weight: 400;
   letter-spacing: 0.06em;
@@ -216,11 +194,10 @@
   transition: all 0.3s ease;
   font-size: 0.95rem;
   background: transparent !important;
-  border-radius: 30px !important; /* Mismo radio que el carrito */
-  margin: 0.2rem 0 !important; /* Espaciado consistente */
+  border-radius: 30px !important; 
+  margin: 0.2rem 0 !important; 
 }
 
-/* Efecto hover - igual que el carrito */
 .nav-link:hover {
   background-color: rgba(255, 255, 255, 0.15) !important;
   color: var(--highlight) !important;
@@ -228,25 +205,20 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Estado activo */
 .nav-link.active {
   font-weight: 700;
   color: var(--highlight) !important;
-  background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
-/* Quitamos el subrayado para mantener consistencia con el carrito */
 .nav-link::after {
   display: none;
 }
 
-/* ==================== */
-/* AJUSTES ESPECÍFICOS PARA EL MENÚ HAMBURGUESA */
-/* ==================== */
+/* MENU HAMBURGUESA */
 @media (max-width: 991.98px) {
   .navbar-collapse {
     padding: 0.5rem 0;
-    background-color: rgba(171, 144, 144, 0.95);
+    background-color: rgb(171, 144, 144);
     border-radius: 0.5rem;
     margin-top: 0.5rem;
   }
@@ -256,9 +228,27 @@
     text-align: center;
     width: calc(100% - 1rem);
   }
-  
-  /* Efecto hover más pronunciado en mobile */
+
   .nav-link:hover {
     background-color: rgba(255, 255, 255, 0.2) !important;
+  }
+}
+
+.navbar.main-nav.scrolled .nav-link {
+  color: #3a0c0c !important; /* o el color que prefieras */
+}
+
+.navbar.main-nav.scrolled .nav-link.cart-nav {
+  color: #3a0c0c !important;
+}
+
+@media (max-width: 991.98px) {
+  .nav-logo-container {
+    height: 35px;
+    max-width: 120px;
+  }
+
+  .nav-logo {
+    object-fit: contain;
   }
 }

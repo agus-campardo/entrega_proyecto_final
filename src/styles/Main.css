@@ -1,271 +1,266 @@
-/* Aplicar Rowdies a todos los elementos de texto */
-.main-container,
-.hero-section,
-.categorias-section,
-.ofertas-section,
-.testimonios-section,
-.hero-carousel {
-  font-family: 'Rowdies', sans-serif;
-}
-
-/* Manteniendo TODOS los estilos originales exactamente igual */
+/* MAIN */
 .main-container {
-    padding: 2rem;
+    padding: 0 0 3rem 0; 
     background-color: var(--lightGray);
+    font-family: 'Rowdies', sans-serif;
 }
 
-.hero-section {
-    text-align: center;
-    padding: 4rem 2rem;
-    background: linear-gradient(rgba(63, 24, 24, 0.8), rgba(63, 24, 24, 0.8));
-    color: var(--lightGray);
-    border-radius: 10px;
-    margin-bottom: 2rem;
-}
-
-.hero-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    font-weight: 700; /* Bold para Rowdies */
-    letter-spacing: 0.03em; /* Ajustado para Rowdies */
-}
-
-/* Las categorías */
-.categorias-section {
-    margin: 3rem 0;
-}
-
-.categorias-section h3 {
-    color: var(--darkRed);
-    text-align: center;
-    margin-bottom: 2rem;
-    font-weight: 700; /* Bold para Rowdies */
-}
-
-.categorias-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-}
-
-.categoria-card {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    text-align: center;
-    transition: transform 0.3s ease;
-}
-
-.categoria-card:hover {
-    transform: translateY(-5px);
-}
-
-.categoria-card h4 {
-    color: var(--darkRed);
-    margin-bottom: 0.5rem;
-    font-weight: 400; /* Regular para Rowdies */
-}
-
-/* Parte de ofertas */
-.ofertas-section {
-    margin: 3rem 0;
-}
-
-.ofertas-section h3 {
-    color: var(--darkRed);
-    text-align: center;
-    margin-bottom: 1rem;
-    font-weight: 700; /* Bold para Rowdies */
-}
-
-.ofertas-banner {
-    background-color: var(--coral);
-    color: white;
-    padding: 1.5rem;
-    text-align: center;
-    border-radius: 8px;
-    font-weight: 700; /* Bold para Rowdies */
-}
-
-/* Sección de testimonios */
-.testimonios-section {
-    margin: 3rem 0;
-}
-
-.testimonios-section h3 {
-    color: var(--darkRed);
-    text-align: center;
-    margin-bottom: 2rem;
-    font-weight: 700; /* Bold para Rowdies */
-}
-
-.testimonio-card {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
-    font-style: italic;
-    font-weight: 300; /* Light para Rowdies */
-}
-
-.testimonio-card span {
-    display: block;
-    margin-top: 1rem;
-    font-weight: 700; /* Bold para Rowdies */
-    color: var(--warmBrown);
-    font-style: normal;
-}
-
-/* Estilos para el carrusel */
+/* CARRUSEL */
 .hero-carousel {
-    border-radius: 10px;
+    border-radius: 0;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
 }
 
-.hero-carousel .carousel-inner {
-    border-radius: 10px;
+.carousel-image-container {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
 }
 
-.hero-carousel .carousel-item img {
-    max-height: 500px;
+.carousel-image {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    object-position: center;
+    transition: transform 5s ease;
 }
 
-.hero-carousel .carousel-caption {
-    background: rgba(90, 62, 54, 0.7);
-    border-radius: 8px;
-    padding: 1rem;
-    bottom: 2rem;
-    left: 10%;
-    right: 10%;
+.carousel-item:hover .carousel-image {
+    transform: scale(1.03);
 }
 
-.hero-carousel .carousel-caption h3 {
-    color: var(--lightGray);
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
-    font-weight: 700; /* Bold para Rowdies */
+/* controles del carrusel */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 50px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-.hero-carousel .carousel-caption p {
-    color: var(--lightGray);
-    font-size: 1.2rem;
-    font-weight: 300; /* Light para Rowdies */
+.hero-carousel:hover .carousel-control-prev,
+.hero-carousel:hover .carousel-control-next {
+    opacity: 0.7;
 }
 
-.hero-carousel .carousel-control-prev,
-.hero-carousel .carousel-control-next {
-    width: 5%;
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1 !important;
 }
 
-.hero-carousel .carousel-indicators button {
-    background-color: var(--warmBrown);
-    width: 10px;
-    height: 10px;
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 50%;
+    padding: 1.5rem;
+    background-size: 50%;
+}
+
+/* indicadores del carrusel */
+.carousel-indicators {
+    bottom: 20px;
+}
+
+.carousel-indicators [data-bs-target] {
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     margin: 0 5px;
-}
-
-.hero-carousel .carousel-indicators .active {
-    background-color: var(--coral);
-}
-
-/* Beneficios */
-.benefits-container {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-.benefit-card {
     border: none;
-    border-radius: 10px;
+    background-color: rgba(255,255,255,0.5);
     transition: all 0.3s ease;
-    background-color: var(--lightGray);
 }
 
-.benefit-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+.carousel-indicators .active {
+    background-color: white;
+    width: 25px;
+    border-radius: 4px;
 }
 
-.benefit-icon {
-    font-size: 2.5rem;
-    color: var(--coral);
-    margin-bottom: 1rem;
-}
-
-/* Banner Promocional */
+/* PROMO BANNER */
 .promo-banner {
     background-color: var(--darkRed);
     color: white;
-    margin: 3rem 0;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin: 2rem auto;
+    max-width: 95%;
+    position: relative;
+    overflow: hidden;
+}
+
+.promo-banner-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 0%, transparent 20%),
+        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.1) 0%, transparent 20%);
+    z-index: 0;
+}
+
+.promo-banner h3 {
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.promo-badge {
+    background-color: var(--beige);
+    color: var(--darkRed);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    animation: pulse 2s infinite;
+}
+
+.promo-code {
+    background-color: rgba(0,0,0,0.2);
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 1.1rem;
 }
 
 .promo-btn {
-    background-color: white;
+    background-color: var(--beige);
     color: var(--darkRed);
     border-radius: 30px;
-    padding: 0.5rem 1.5rem;
-    font-weight: bold;
+    padding: 0.6rem 1.8rem;
+    font-weight: 700;
     transition: all 0.3s ease;
+    border: none;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 .promo-btn:hover {
     background-color: var(--coral);
-    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
 }
 
-/* Categorías */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* CATEGORIAS */
+.categories-container {
+    padding: 4rem 0;
+}
+
+.categories-container h2 {
+    color: var(--darkRed);
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.categories-container h2::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 3px;
+    background: var(--coral);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* tarjetas de categoría */
 .category-card {
     border: none;
     border-radius: 10px;
     overflow: hidden;
-    height: 250px;
+    height: 350px; /* Altura fija */
     transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    position: relative; 
 }
 
-.category-card:hover {
-    transform: scale(1.02);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+.category-image-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    padding-top: 100%;
 }
 
-.category-card .card-img {
+.category-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(0.7);
+    object-position: center;
+    transition: transform 0.5s ease;
+    filter: brightness(0.8);
+}
+
+.category-card:hover .category-image {
+    filter: brightness(0.6);
+    transform: scale(1.05);
 }
 
 .category-card .card-img-overlay {
     background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
 }
 
-/* Newsletter */
+.category-card .card-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+/* INSCRIBIRSE */
 .newsletter-container {
-    background-color: var(--lightGray);
+    background-color: var(--darkRed);
+    color: white;
+    padding: 4rem 0;
 }
 
 .newsletter-icon {
     font-size: 3rem;
-    color: var(--coral);
+    color: var(--beige);
+}
+
+.newsletter-container h2 {
+    font-weight: 700;
+    font-size: 2rem;
 }
 
 .newsletter-input {
-    border-radius: 30px;
-    border: 2px solid var(--darkRed);
-    padding: 0.7rem 1.5rem;
+    border-radius: 30px 0 0 30px;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-weight: 300;
 }
 
 .newsletter-btn {
-    border-radius: 30px;
-    padding: 0.7rem 2rem;
-    background-color: var(--darkRed);
+    border-radius: 0 30px 30px 0;
+    padding: 0.8rem 2rem;
+    background-color: var(--beige);
+    color: var(--darkRed);
     border: none;
+    font-weight: 700;
     transition: all 0.3s ease;
 }
 
@@ -273,19 +268,3 @@
     background-color: var(--coral);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .category-card {
-        height: 200px;
-    }
-    
-    .newsletter-container .d-flex {
-        flex-direction: column;
-    }
-    
-    .newsletter-btn {
-        margin-top: 1rem;
-        margin-left: 0 !important;
-        width: 100%;
-    }
-}

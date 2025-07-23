@@ -1,29 +1,21 @@
-/* ==================== */
 /* ESTILOS BASE */
-/* ==================== */
 .about-section {
-  padding: 4rem 1.5rem;
-  background-color: #f9f5f2; /* Fondo claro similar a tu estilo */
+  padding: 4rem 0;
+  background-color: #f9f5f2;
   font-family: 'Rowdies', sans-serif;
 }
 
 .about-container {
+  background: transparent; /* Cambiado a transparente */
+  padding: 2rem 0; /* Reducido el padding */
+  animation: fadeIn 0.6s ease-out;
   max-width: 1200px;
   margin: 0 auto;
-  background: white;
-  border-radius: 14px;
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
-  padding: 3rem;
-  border: 1px solid rgba(216, 193, 173, 0.3);
-  animation: fadeIn 0.6s ease-out;
 }
 
-/* ==================== */
-/* TÍTULO */
-/* ==================== */
+/* TITULO */
 .about-title {
-  color: #5A3E3E; /* Color marrón oscuro */
-  text-align: center;
+  color: #5A3E3E; 
   font-size: 2.2rem;
   margin-bottom: 2.5rem;
   letter-spacing: 0.1em;
@@ -40,17 +32,14 @@
   transform: translateX(-50%);
   width: 100px;
   height: 3px;
-  background-color: #AB9090; /* Color rosa/marrón de tu navbar */
+  background-color: #AB9090; 
 }
 
-/* ==================== */
 /* CONTENIDO */
-/* ==================== */
 .about-text {
   color: #5A3E3E;
   font-size: 1.1rem;
   line-height: 1.8;
-  text-align: center;
   margin-bottom: 3rem;
   font-weight: 300;
 }
@@ -60,28 +49,24 @@
   font-weight: 400;
 }
 
-/* ==================== */
-/* TARJETAS DE CARACTERÍSTICAS */
-/* ==================== */
+/* TARJETAS */
 .about-features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
   margin: 3rem 0;
 }
 
 .feature-card {
-  background: rgba(171, 144, 144, 0.05);
-  border-radius: 10px;
+  background: white; /* Fondo blanco para las cards */
+  border-radius: 8px;
   padding: 2rem;
   transition: all 0.3s ease;
-  border: 1px solid rgba(171, 144, 144, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Sombra muy suave */
+  height: 100%;
+  border: none;
 }
 
 .feature-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 5px 15px rgba(171, 144, 144, 0.1);
-  border-color: rgba(171, 144, 144, 0.3);
 }
 
 .feature-title {
@@ -99,21 +84,16 @@
   font-weight: 300;
 }
 
-/* ==================== */
-/* TEXTO FINAL */
-/* ==================== */
+/* TEXTO AL FINAL */
 .about-closing {
   color: #5A3E3E;
   font-size: 1.1rem;
   line-height: 1.8;
-  text-align: center;
   margin-top: 3rem;
   font-weight: 300;
 }
 
-/* ==================== */
-/* ANIMACIONES */
-/* ==================== */
+/* ANIMACION */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -125,33 +105,37 @@
   }
 }
 
-/* ==================== */
-/* RESPONSIVE */
-/* ==================== */
+/* MEDIA QUERIES */
 @media (max-width: 768px) {
-  .about-container {
-    padding: 2rem;
-  }
-  
   .about-title {
     font-size: 1.8rem;
   }
   
-  .about-features {
-    grid-template-columns: 1fr;
+  .about-text, .about-closing {
+    font-size: 1rem;
+  }
+  
+  .feature-title {
+    font-size: 1.2rem;
+  }
+  
+  .feature-card {
+    padding: 1.5rem;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 576px) {
   .about-section {
     padding: 2rem 1rem;
   }
   
-  .about-container {
-    padding: 1.5rem;
-  }
-  
   .about-title {
     font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .about-title::after {
+    width: 70px;
+    height: 2px;
   }
 }

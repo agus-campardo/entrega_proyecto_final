@@ -2,7 +2,7 @@ import React, { createContext, useState, useContext } from 'react';
 // Crear el contexto de de los productos
 const ProductosContext = createContext();
 export function ProductosProvider({ children }) {
-    const [productos, setProductos] = useState([{name: "", image: "", id: ""}])
+    const [productos, setProductos] = useState([])
     const [productosOriginales, setProductosOriginales] = useState([])
     const [productoEncontrado, setProductoEncontrado] = useState([])
 
@@ -46,8 +46,10 @@ export function ProductosProvider({ children }) {
                     const data = await respuesta.json();
                             console.log('Producto agregado:', data);
                             res(data)
+                            //alert('Producto agregado correctamente');
                     } catch (error) {
                         console.error(error.message);
+                        //alert('Hubo un problema al agregar el producto.');
                         rej(error.message)
                     }
             })
@@ -101,21 +103,25 @@ export function ProductosProvider({ children }) {
     }
 
     const eliminarProducto = (id) => {
-        return new Promise(async (res, rej) => {
-            try {
-            const respuesta = await fetch(`https://683267eec3f2222a8cb23943.mockapi.io/PRODUCTOS/${id}`, {
-                method: 'DELETE',
-            });
-            
-            if (!respuesta.ok) throw new Error('Error al eliminar');
-            
-            // Eliminamos el alert nativo y simplemente resolvemos la promesa
-            res()
-            } catch (error) {
-            console.error(error.message);
-            rej(error)
-            }
-        })
+        const confirmar = window.confirm('¿Estás seguro de eliminar?');
+        if (confirmar) {
+            return(
+                new Promise(async (res, rej) => {
+                    try {
+                        const respuesta = await fetch(`https://683267eec3f2222a8cb23943.mockapi.io/PRODUCTOS/${id}`, {
+                        method: 'DELETE',
+                        });
+                        if (!respuesta.ok) throw new Error('Error al eliminar');
+                        alert('Producto eliminado correctamente.');
+                        res()
+                    } catch (error) {
+                        console.error(error.message);
+                        alert('Hubo un problema al eliminar el producto.');
+                        rej(error)
+                    }
+                })
+            )
+        }
     }
 
     function filtrarProductos(filtro){
@@ -137,4 +143,3 @@ export function ProductosProvider({ children }) {
     );
 }
 export const useProductosContext = () => useContext(ProductosContext);
-

@@ -23,19 +23,18 @@ function Footer() {
                         </div>
                     </Col>
 
-                    {/* Quick Links */}
+                    {/* Enlaces (parte del medio) */}
                     <Col md={4} className="text-center">
                         <h4 className="footer-links-title mb-3">Enlaces rápidos</h4>
                         <div className="footer-links d-flex flex-column gap-2">
-                            <Link to="/contacto" className="footer-link">Contacto</Link>
+                            <Link to="/contacto" className="footer-link">¿Alguna duda? Escríbemos</Link>
                         </div>
                     </Col>
 
-                    {/* Contact Info */}
+                    {/* Info */}
                     <Col md={4} className="text-center text-md-end">
-                        <h4 className="footer-contact-title mb-3">Contacto</h4>
+                        <h4 className="footer-contact-title mb-3">Información</h4>
                         <div className="footer-contact-info">
-                            <p><MdEmail className="me-2" />info@kiroo.com</p>
                             <p><FaWhatsapp className="me-2" />+54 11 1234-5678</p>
                             <p>Lun-Vie: 9am - 6pm</p>
                         </div>

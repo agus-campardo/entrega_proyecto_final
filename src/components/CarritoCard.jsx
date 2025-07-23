@@ -1,6 +1,6 @@
 import "../styles/Carrito.css";
 
-function CarritoCard({ producto, funcionDisparadora }) {
+function CarritoCard({ producto, onDelete }) {
     const precio = typeof producto.price === 'number' ? producto.price : parseFloat(producto.price);
     const subtotal = precio * (producto.cantidad || 1);
 
@@ -11,7 +11,7 @@ function CarritoCard({ producto, funcionDisparadora }) {
                     className="carrito-image" 
                     src={producto.image} 
                     alt={producto.name}
-                    onError={(e) => e.target.src = 'https://via.placeholder.com/80'}
+                    onError={(e) => e.target.src = 'https://github.com/agus-campardo/entrega_proyecto_final/blob/main/public/c-d-x-PDX_a_82obo-unsplash.jpg?raw=true'}
                 />
             </div>
             
@@ -20,7 +20,7 @@ function CarritoCard({ producto, funcionDisparadora }) {
                     <h3 className="carrito-producto">{producto.name}</h3>
                     <button 
                         className="carrito-remove-btn"
-                        onClick={() => funcionDisparadora(producto.id)}
+                        onClick={() => onDelete(producto.id)}
                         aria-label="Eliminar producto"
                     >
                         &times;

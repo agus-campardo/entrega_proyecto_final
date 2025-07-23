@@ -9,6 +9,7 @@ import Row from 'react-bootstrap/Row';
 import CardProducto from "./Card"
 import { FaSearch } from "react-icons/fa";
 import Swal from 'sweetalert2';
+import Footer from "./Footer";
 
 function ProductosContainer({}){
     const {productos, obtenerProductos, filtrarProductos} = useProductosContext();
@@ -65,72 +66,76 @@ function ProductosContainer({}){
         return <p>{error}</p>;
     } else {
         return(
-            <div className="productos-contenedor">
-                <Helmet>
-                    <title>Productos | Mi Tienda</title>
-                    <meta name="description" content="Explora nuestra variedad de productos." />
-                </Helmet>
-                
-                {/* Barra de búsqueda */}
-                <div className="input-group mb-3 mt-3">
-                    <span className="input-group-text">
-                        <FaSearch />
-                    </span>
-                    <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Buscar productos..."
-                        value={filtro}
-                        onChange={(e) => setFiltro(e.target.value)}
-                    />
-                </div>
+            <>
+                <div className="productos-contenedor">
+                    <Helmet>
+                        <title>Productos | Mi Tienda</title>
+                        <meta name="description" content="Explora nuestra variedad de productos." />
+                    </Helmet>
+                    
+                    {/* Barra de búsqueda */}
+                    <div className="input-group mb-3 mt-3">
+                        <span className="input-group-text">
+                            <FaSearch />
+                        </span>
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Buscar productos..."
+                            value={filtro}
+                            onChange={(e) => setFiltro(e.target.value)}
+                        />
+                    </div>
 
-                {/* Lista de productos */}
-                <Row xs={1} md={2} lg={4} className="g-4">
-                    {productosActuales.length > 0 ? 
-                        productosActuales.map((producto) => (
-                            <Col key={producto.id}>
-                                <CardProducto producto={producto} />
-                            </Col>
-                        ))
-                    : <p className="text-center w-100">No se encontraron productos</p>}
-                </Row>
+                    {/* Lista de productos */}
+                    <Row xs={1} md={2} lg={4} className="g-4">
+                        {productosActuales.length > 0 ? 
+                            productosActuales.map((producto) => (
+                                <Col key={producto.id}>
+                                    <CardProducto producto={producto} />
+                                </Col>
+                            ))
+                        : <p className="text-center w-100">No se encontraron productos</p>}
+                    </Row>
 
-                {/* Paginación */}
-                <div className="pagination-container">
-                    {/* Flecha izquierda */}
-                    <button 
-                        className="pagination-btn" 
-                        onClick={() => cambiarPagina(Math.max(1, paginaActual - 1))}
-                        disabled={paginaActual === 1}
-                        aria-label="Página anterior"
-                    >
-                        &lt;
-                    </button>
-
-                    {/* Números de página */}
-                    {Array.from({ length: totalPaginas }, (_, index) => (
-                        <button
-                            key={index + 1}
-                            className={`pagination-btn ${paginaActual === index + 1 ? "active" : ""}`}
-                            onClick={() => cambiarPagina(index + 1)}
-                            aria-label={`Ir a página ${index + 1}`}
+                    {/* Paginación */}
+                    <div className="pagination-container">
+                        {/* Flecha izquierda */}
+                        <button 
+                            className="pagination-btn" 
+                            onClick={() => cambiarPagina(Math.max(1, paginaActual - 1))}
+                            disabled={paginaActual === 1}
+                            aria-label="Página anterior"
                         >
-                            {index + 1}
+                            &lt;
                         </button>
-                    ))}
 
-                    {/* Flecha derecha */}
-                    <button 
-                        className="pagination-btn" 
-                        onClick={() => cambiarPagina(Math.min(totalPaginas, paginaActual + 1))}
-                        disabled={paginaActual === totalPaginas}
-                        aria-label="Página siguiente"
-                    >
-                        &gt;
-                    </button>
+                        {/* Números de página */}
+                        {Array.from({ length: totalPaginas }, (_, index) => (
+                            <button
+                                key={index + 1}
+                                className={`pagination-btn ${paginaActual === index + 1 ? "active" : ""}`}
+                                onClick={() => cambiarPagina(index + 1)}
+                                aria-label={`Ir a página ${index + 1}`}
+                            >
+                                {index + 1}
+                            </button>
+                        ))}
+
+                        {/* Flecha derecha */}
+                        <button 
+                            className="pagination-btn" 
+                            onClick={() => cambiarPagina(Math.min(totalPaginas, paginaActual + 1))}
+                            disabled={paginaActual === totalPaginas}
+                            aria-label="Página siguiente"
+                        >
+                            &gt;
+                        </button>
+                    </div>
                 </div>
-            </div>
+                <Footer />
+            </>
+
         )
     }
 }

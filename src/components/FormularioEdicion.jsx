@@ -12,12 +12,8 @@ function FormularioEdicion() {
   const [producto, setProducto] = useState(productoEncontrado);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
-  
-  if(!admin) {
-    return <Navigate to="/login" replace />;
-  }
 
-  // Función para mostrar alerts bonitos
+  // Sweet alert
   const mostrarAlerta = (icono, titulo, texto) => {
     Swal.fire({
       icon: icono,
@@ -36,20 +32,21 @@ function FormularioEdicion() {
   };
 
   useEffect(() => {
+    if (!admin) return; // 👈 nos aseguramos de no continuar si no hay admin
     obtenerProducto(id).then(() => {
       setCargando(false);
     }).catch((error) => {
-      if(error === "Producto no encontrado") {
+      if (error === "Producto no encontrado") {
         setError("Producto no encontrado");
         mostrarAlerta('error', 'Error', 'Producto no encontrado');
       }
-      if(error === "Hubo un error al obtener el producto.") {
+      if (error === "Hubo un error al obtener el producto.") {
         setError("Hubo un error al obtener el producto.");
         mostrarAlerta('error', 'Error', 'Hubo un problema al cargar el producto');
       }
       setCargando(false);
     });
-  }, [id]);
+  }, [id, admin]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -66,7 +63,7 @@ function FormularioEdicion() {
     if (!producto.description.trim() || producto.description.length < 10) {
       return "La descripción debe tener al menos 10 caracteres.";
     }
-    if(!producto.image.trim()) {
+    if (!producto.image.trim()) {
       return "La URL de la imagen no debe estar vacía";
     }
     return true;
@@ -75,8 +72,8 @@ function FormularioEdicion() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const validarForm = validarFormulario();
-    
-    if(validarForm === true) {
+
+    if (validarForm === true) {
       editarProducto(producto).then(() => {
         mostrarAlerta('success', '¡Éxito!', 'Producto actualizado correctamente');
       }).catch((error) => {
@@ -86,6 +83,10 @@ function FormularioEdicion() {
       mostrarAlerta('error', 'Error en el formulario', validarForm);
     }
   };
+
+  if (!admin) {
+    return <Navigate to="/login" replace />;
+  }
 
   if (cargando) {
     return (
@@ -110,7 +111,7 @@ function FormularioEdicion() {
     <div className="formulario-edicion-container">
       <form className="formulario-edicion" onSubmit={handleSubmit}>
         <h2>Editar Producto</h2>
-        
+
         <div className="form-group">
           <label>Nombre:</label>
           <input
@@ -121,7 +122,7 @@ function FormularioEdicion() {
             required
           />
         </div>
-        
+
         <div className="form-group">
           <label>URL de la Imagen:</label>
           <input
@@ -132,7 +133,7 @@ function FormularioEdicion() {
             required
           />
         </div>
-        
+
         <div className="form-group">
           <label>Precio:</label>
           <input
@@ -145,7 +146,7 @@ function FormularioEdicion() {
             step="0.01"
           />
         </div>
-        
+
         <div className="form-group">
           <label>Descripción:</label>
           <textarea
@@ -155,9 +156,9 @@ function FormularioEdicion() {
             required
           />
         </div>
-        
+
         <button type="submit">Actualizar Producto</button>
-        
+
         <Link to="/admin" className="boton-volver-panel">
           Volver al panel
         </Link>

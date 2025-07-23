@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "../styles/Productos.css";
 
-function Card({ producto }) { // Eliminé el prop 'agregarAlCarrito' ya que no se usará
+function Card({ producto }) { 
     return (
         <div className="producto-card">
             <h2 style={{ color: "black" }}>{producto.name}</h2>
@@ -10,7 +10,11 @@ function Card({ producto }) { // Eliminé el prop 'agregarAlCarrito' ya que no s
                 <img 
                     className="producto-image" 
                     src={producto.image} 
-                    alt={producto.name} 
+                    alt={producto.name}
+                    onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = "https://github.com/agus-campardo/entrega_proyecto_final/blob/main/public/c-d-x-PDX_a_82obo-unsplash.jpg?raw=true";
+                    }}
                 />
             </Link>
 

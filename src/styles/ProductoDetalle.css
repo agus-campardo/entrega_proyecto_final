@@ -1,239 +1,66 @@
-/* PALETA DE COLORES (MANTENIENDO TU ESENCIA) */
+/* PALETA DE COLORES */
 :root {
-  --lightGray: rgba(216, 216, 214, 1);   /* Fondo suavizado */
-  --beige: rgba(216, 193, 173, 0.3);    /* Ahora con transparencia para usos sutiles */
-  --warmBrown: rgba(114, 76, 63, 1);    /* Texto principal */
-  --darkRed: rgba(63, 24, 24, 1);       /* Elementos destacados */
-  --coral: rgba(140, 63, 63, 0.9);      /* Hovers y acentos */
+  --lightGray: rgba(216, 216, 214, 1);
+  --beige: rgba(216, 193, 173, 0.3);
+  --warmBrown: rgba(114, 76, 63, 1);
+  --darkRed: rgba(63, 24, 24, 1);
+  --coral: rgba(140, 63, 63, 0.9);
   --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* ESTRUCTURA PRINCIPAL - VERSIÓN PREMIUM */
-.detalle-container {
-  display: flex;
-  max-width: 1200px;
-  margin: 3rem auto;
-  gap: 4rem;
-  padding: 0;
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
+/* ESTILOS GENERALES */
+body {
   font-family: 'Rowdies', sans-serif;
-  position: relative;
 }
 
-/* IMAGEN DE PRODUCTO - ESTILO GALERÍA */
-.detalle-image {
-  width: 55%;
-  height: auto;
-  min-height: 500px;
-  object-fit: cover;
-  background: linear-gradient(to bottom, var(--lightGray), white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 3rem;
-  border-right: 1px solid rgba(216, 193, 173, 0.5);
-}
-
-/* CONTENIDO - VERSIÓN EDITORIAL */
-.detalle-info {
-  width: 45%;
-  padding: 3rem 3rem 3rem 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.detalle-info h2 {
+/* SWEETALERT */
+.swal-title-custom {
   color: var(--darkRed);
-  margin: 0 0 1.2rem 0;
-  font-size: 2.4rem;
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.5px;
+  font-family: 'Rowdies', sans-serif;
 }
 
-.detalle-info p {
-  color: var(--warmBrown);
-  line-height: 1.7;
-  margin: 0 0 2.5rem 0;
-  font-size: 1.05rem;
-  font-weight: 300;
+.swal-button-custom {
+  background-color: var(--darkRed);
+  font-family: 'Rowdies', sans-serif;
 }
 
-.price {
-  font-size: 2.2rem;
+.swal-button-custom:hover {
+  background-color: var(--coral) !important;
+}
+
+
+/* ANIMACIONES Y EFECTOS */
+.btn-dark {
+  background-color: var(--darkRed);
+  border-color: var(--darkRed);
+}
+
+.btn-dark:hover {
+  background-color: var(--coral);
+  border-color: var(--coral);
+  transform: translateY(-2px);
+}
+
+.btn-outline-dark {
   color: var(--darkRed);
-  margin: 1.5rem 0 2.5rem;
-  font-weight: 700;
-  position: relative;
-  display: inline-block;
+  border-color: var(--darkRed);
 }
 
-.price::after {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  left: 0;
-  width: 60px;
-  height: 2px;
-  background: var(--beige);
-}
-
-/* CONTADOR - ESTILO LUXE */
-.detalle-contador {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin: 1rem 0;
-}
-
-.detalle-contador button {
-  width: 36px;
-  height: 36px;
-  background: var(--darkRed);
+.btn-outline-dark:hover {
+  background-color: var(--darkRed);
   color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1.1rem;
+}
+
+/* TRANSICIÓN PARA BOTONES */
+.btn {
   transition: var(--transition);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+}
+
+/* CONTADOR */
+.detalle-contador button {
+  transition: var(--transition);
 }
 
 .detalle-contador button:hover {
-  background: var(--coral);
-  transform: scale(1.05);
-}
-
-.detalle-contador span {
-  min-width: 40px;
-  text-align: center;
-  font-weight: bold;
-  color: var(--darkRed);
-  font-size: 1.1rem;
-}
-
-/* BOTÓN PRINCIPAL - ESTILO FIRMA */
-.btn-agregar {
-  background: var(--darkRed);
-  color: white;
-  padding: 1rem 2rem;
-  border-radius: 4px;
-  font-weight: 500;
-  font-size: 0.85rem;
-  transition: var(--transition);
-  cursor: pointer;
-  border: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin: 1.5rem 0 0;
-  width: auto;
-  max-width: 280px;
-}
-
-.btn-agregar:hover {
-  background: var(--coral);
-  letter-spacing: 1.2px;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(140, 63, 63, 0.3);
-}
-
-/* BOTONES ADMIN - VERSIÓN PREMIUM */
-.detalle-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  margin-top: 3rem;
-  width: 100%;
-  max-width: 280px;
-}
-
-.btn-action {
-  padding: 0.9rem;
-  border-radius: 4px;
-  font-weight: 500;
-  font-size: 0.8rem;
-  transition: var(--transition);
-  cursor: pointer;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  width: 100%;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  border: 1px solid transparent;
-}
-
-/* BOTÓN EDITAR PRODUCTO (sin subrayado) */
-.btn-editar {
-  background: white;
-  color: var(--darkRed);
-  border: 1px solid var(--darkRed);
-  text-decoration: none !important; /* Elimina cualquier subrayado */
-}
-
-/* SECCIÓN DE COMPRA - VERSIÓN MEJORADA */
-.contador-carrito-group {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 1rem;
-  margin-top: 2rem;
-  padding: 1.5rem;
-  background: rgba(216, 216, 214, 0.3); /* Fondo sutil */
-  border-radius: 8px;
-  border: 1px solid var(--beige);
-}
-
-/* BOTÓN AGREGAR AL CARRITO (full width) */
-.btn-agregar {
-  width: 100% !important;
-  max-width: 100% !important;
-  padding: 1.1rem !important;
-  font-size: 0.9rem !important;
-  margin-top: 0.5rem !important;
-  position: relative;
-  overflow: hidden;
-}
-
-/* EFECTO ESPECIAL PARA EL BOTÓN */
-.btn-agregar::after {
-  content: "→";
-  position: absolute;
-  right: 1.5rem;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: var(--transition);
-}
-
-.btn-agregar:hover::after {
-  transform: translate(5px, -50%);
-}
-
-/* CONTADOR ELEGANTE */
-.detalle-contador {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  background: white;
-  padding: 0.8rem;
-  border-radius: 6px;
-  border: 1px solid var(--beige);
-}
-
-.detalle-contador span {
-  font-size: 1.2rem;
-  font-weight: 700;
+  transform: scale(1.1);
 }

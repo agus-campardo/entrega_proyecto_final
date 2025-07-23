@@ -1,4 +1,4 @@
-/* FORMULARIO DE PRODUCTO - ESTILO COHERENTE CON LOGIN */
+/* FORMULARIO DE PRODUCTO */
 .formulario-producto-container {
   max-width: 500px;
   margin: 3rem auto;
@@ -6,50 +6,55 @@
   background: white;
   border-radius: 14px;
   box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
-  font-family: 'Rowdies', sans-serif; /* Cambiado a Rowdies */
+  font-family: 'Rowdies', sans-serif;
   animation: fadeIn 0.4s ease-in-out;
   border: 1px solid rgba(216, 193, 173, 0.3);
 }
 
+/* estructura del formulario */
 .formulario-producto {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
+/* titulo principal */
 .formulario-producto h2 {
   text-align: center;
   color: var(--darkRed);
   font-size: 1.8rem;
-  font-weight: 700; /* Ajustado para Rowdies */
+  font-weight: 700;
   margin-bottom: 0.5rem;
-  letter-spacing: 0.03em; /* Ajustado para Rowdies */
-  text-transform: uppercase; /* Opcional - combina con Rowdies */
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
 
+/* subtitulo descriptivo */
 .formulario-producto p.subtitle {
   text-align: center;
   color: var(--warmBrown);
   font-size: 0.92rem;
   margin-bottom: 1.5rem;
   line-height: 1.5;
-  font-weight: 300; /* Light para Rowdies */
+  font-weight: 300;
 }
 
+/* grupos de campos */
 .formulario-producto .form-group {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
+/* etiquetas de campos */
 .formulario-producto label {
   color: var(--warmBrown);
   font-size: 0.9rem;
-  font-weight: 400; /* Regular para Rowdies */
+  font-weight: 400;
   letter-spacing: 0.03em;
 }
 
-/* Inputs mantienen fuente del sistema para mejor legibilidad */
+/* campos de entrada */
 .formulario-producto input,
 .formulario-producto textarea {
   width: 100%;
@@ -60,14 +65,16 @@
   background-color: rgba(255, 255, 255, 0.9);
   transition: all 0.3s ease;
   box-sizing: border-box;
-  font-family: system-ui, -apple-system, sans-serif; /* Fuente del sistema para inputs */
+  font-family: system-ui, -apple-system, sans-serif;
 }
 
+/* textarea especifico */
 .formulario-producto textarea {
   min-height: 100px;
   resize: vertical;
 }
 
+/* estado focus */
 .formulario-producto input:focus,
 .formulario-producto textarea:focus {
   outline: none;
@@ -75,6 +82,7 @@
   box-shadow: 0 0 0 3px rgba(63, 24, 24, 0.08);
 }
 
+/* boton principal */
 .formulario-producto button {
   background: var(--darkRed);
   color: white;
@@ -82,23 +90,24 @@
   padding: 0.75rem;
   border-radius: 8px;
   font-size: 0.92rem;
-  font-weight: 700; /* Bold para Rowdies */
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
   text-transform: uppercase;
-  letter-spacing: 0.05em; /* Ajustado para Rowdies */
+  letter-spacing: 0.05em;
   width: 100%;
   margin-top: 0.5rem;
   font-family: 'Rowdies', sans-serif;
 }
 
+/* hover del boton */
 .formulario-producto button:hover {
   background: var(--coral);
   transform: translateY(-1.5px);
   box-shadow: 0 3px 10px rgba(140, 63, 63, 0.2);
 }
 
-/* ANIMACIONES */
+/* animaciones */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -110,7 +119,7 @@
   }
 }
 
-/* SWEET ALERT */
+/* estilos para sweet alert */
 .swal-title-custom {
   font-family: 'Rowdies', sans-serif;
   color: var(--darkRed);

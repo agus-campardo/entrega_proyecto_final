@@ -1,13 +1,12 @@
 import "../styles/Carrito.css";
 import { useContext } from "react";
 import CarritoCard from "./CarritoCard.jsx";
-import { Navigate } from "react-router-dom";
 import { CarritoContext } from "../contexts/CarritoContext.jsx";
 import { useAuthContext } from "../contexts/AuthContext.jsx";
 
 export default function Carrito() {
     const { user } = useAuthContext();
-    const { productosCarrito, vaciarCarrito } = useContext(CarritoContext);
+    const { productosCarrito, vaciarCarrito, borrarProductoCarrito } = useContext(CarritoContext);
 
     const total = productosCarrito.reduce(
         (subTotal, producto) => subTotal + (producto.price * producto.cantidad), 0
@@ -37,9 +36,7 @@ export default function Carrito() {
                         className="vaciar-carrito"
                         onClick={vaciarCarrito}
                         aria-label="Vaciar carrito"
-                    >
-                        Vaciar carrito
-                    </button>
+                    >Vaciar carrito</button>
                 )}
             </div>
 
@@ -51,6 +48,7 @@ export default function Carrito() {
                                 <CarritoCard 
                                     key={producto.id}
                                     producto={producto}
+                                    onDelete={borrarProductoCarrito}
                                 />
                             ))}
                         </div>
@@ -60,8 +58,7 @@ export default function Carrito() {
                                 <span>Total:</span>
                                 <span>${total.toFixed(2)}</span>
                             </div>
-                            <button className="boton-finalizar-compra">
-                                Finalizar Compra
+                            <button className="boton-finalizar-compra"> Finalizar Compra
                             </button>
                         </div>
                     </>
